@@ -1,0 +1,83 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* @custom-variant dark (&:is(.dark *)); */
+
+@theme {
+  --font-pretendard: "Pretendard", sans-serif;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/PretendardVariable.woff2") format("woff2");
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 8px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-active: var(--primary-active);
+
+  --color-success: var(--success);
+  --color-success-hover: var(--success-hover);
+  --color-success-active: var(--success-active);
+
+  --color-warning: var(--warning);
+  --color-warning-hover: var(--warning-hover);
+  --color-warning-active: var(--warning-active);
+
+  --color-error: var(--error);
+  --color-error-hover: var(--error-hover);
+  --color-error-active: var(--error-active);
+}
+
+/*
+grid의 경우 grid-cols를 잡고 gap 12px로 잡았습니다. 
+그리고 title이나 그런 경우에는 일일이 만드는게 더 좋다고 생각됩니다. 생각보다 다 달라서 기준 잡기가 어렵네요
+*/
+:root {
+  --radius: 0.75rem; /* 12px */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --primary: #80f467;
+  --primary-hover: #51de3e;
+  --primary-active: rgb(0, 180, 40);
+  --success: #5ac0f3;
+  --success-hover: rgb(40, 133, 203);
+  --success-active: rgb(36 116 183);
+  --warning: #ffef45;
+  --warning-hover: rgb(253 220 62);
+  --warning-active: rgb(251 197 53);
+  --error: #ff4d59;
+  --error-hover: rgb(229 31 55);
+  --error-active: rgb(216 19 48);
+}
+
+.grid-template {
+  @apply grid grid-cols-12 gap-3;
+}
+
+@layer base {
+  * {
+    /* 필요한거 채우기 */
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

@@ -1,6 +1,9 @@
-
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import React from "react";
 
 const Home = () => {
+  const [date, setDate] = React.useState<Date>();
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-orange-50">
       {/* 네비게이션 */}
@@ -17,6 +20,7 @@ const Home = () => {
               >
                 홈
               </a>
+              <div className="font-pretendard text-success">테스트</div>
               <a
                 href="#"
                 className="text-gray-700 hover:text-pink-600 font-medium"
@@ -74,6 +78,10 @@ const Home = () => {
               왜 Caker를 선택해야 할까요?
             </h3>
             <p className="text-gray-600 text-lg">우리가 특별한 이유</p>
+            <Button>테스트</Button>
+            <div className="flex flex-col items-center justify-center gap-2">
+              <Calendar mode="single" selected={date} onSelect={setDate} />
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -134,22 +142,22 @@ const Home = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                name: '클래식 초콜릿',
-                price: '35,000원',
-                description: '진한 초콜릿의 깊은 맛과 부드러운 크림의 조화',
-                image: '🍫',
+                name: "클래식 초콜릿",
+                price: "35,000원",
+                description: "진한 초콜릿의 깊은 맛과 부드러운 크림의 조화",
+                image: "🍫",
               },
               {
-                name: '딸기 생크림',
-                price: '32,000원',
-                description: '신선한 딸기와 달콤한 생크림의 완벽한 만남',
-                image: '🍓',
+                name: "딸기 생크림",
+                price: "32,000원",
+                description: "신선한 딸기와 달콤한 생크림의 완벽한 만남",
+                image: "🍓",
               },
               {
-                name: '바닐라 클래식',
-                price: '30,000원',
-                description: '깔끔하고 우아한 바닐라 향의 정통 케이크',
-                image: '🍰',
+                name: "바닐라 클래식",
+                price: "30,000원",
+                description: "깔끔하고 우아한 바닐라 향의 정통 케이크",
+                image: "🍰",
               },
             ].map((cake, index) => (
               <div
