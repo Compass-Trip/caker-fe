@@ -1,5 +1,9 @@
-import { Button } from "@/components/ui/button";
+import ContainerCarousel from "@/components/Carousels/containerCarousel";
+import NavigationBar from "@/components/NavigationBar/navigationBar";
+import IndicatorTabs from "@/components/Tabs/indicatorTabs";
+import CakeCard from "@/components/ui/cakecard";
 import { Calendar } from "@/components/ui/calendar";
+import Category from "@/components/ui/category";
 import React from "react";
 
 const Home = () => {
@@ -78,7 +82,54 @@ const Home = () => {
               왜 Caker를 선택해야 할까요?
             </h3>
             <p className="text-gray-600 text-lg">우리가 특별한 이유</p>
-            <Button>테스트</Button>
+            <div className="flex gap-4">
+              <Category img="https://cdn.pixabay.com/photo/2025/08/27/02/43/flower-9799036_1280.jpg" />
+              <CakeCard
+                img="https://cdn.pixabay.com/photo/2025/08/27/02/43/flower-9799036_1280.jpg"
+                name="동구리제과"
+                location="서울 강남구"
+                content="인기폭발 주문제작 레터링케이크"
+                discount={3}
+                price={33500}
+              ></CakeCard>
+              <IndicatorTabs
+                tabsItems={[
+                  {
+                    value: "settings",
+                    label: "Settings",
+                    content: (
+                      <div className="space-y-2">
+                        <h3 className="text-lg font-medium">
+                          General Settings
+                        </h3>
+                        <p className="text-muted-foreground text-sm">
+                          Configure your general application settings.
+                        </p>
+                      </div>
+                    ),
+                  },
+                  {
+                    value: "Account",
+                    label: "Account",
+                    content: (
+                      <div className="space-y-2">
+                        <h3 className="text-lg font-medium">General Account</h3>
+                        <p className="text-muted-foreground text-sm">
+                          Configure your general application Account.
+                        </p>
+                      </div>
+                    ),
+                  },
+                ]}
+                classNames={{
+                  tabs: "w-[400px]",
+                  list: "w-full justify-start",
+                  content: "my-4",
+                }}
+              />
+              <ContainerCarousel />
+            </div>
+            <NavigationBar />
             <div className="flex flex-col items-center justify-center gap-2">
               <Calendar mode="single" selected={date} onSelect={setDate} />
             </div>
