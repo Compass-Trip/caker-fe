@@ -27,21 +27,65 @@
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
 
-  --color-primary: var(--primary);
-  --color-primary-hover: var(--primary-hover);
-  --color-primary-active: var(--primary-active);
+  /* Primary */
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
 
-  --color-success: var(--success);
-  --color-success-hover: var(--success-hover);
-  --color-success-active: var(--success-active);
+  /* Orange */
+  --color-point-orange-50: var(--point-orange-50);
+  --color-point-orange-100: var(--point-orange-100);
+  --color-point-orange-200: var(--point-orange-200);
+  --color-point-orange-300: var(--point-orange-300);
+  --color-point-orange-400: var(--point-orange-400);
+  --color-point-orange-500: var(--point-orange-500);
+  --color-point-orange-600: var(--point-orange-600);
+  --color-point-orange-700: var(--point-orange-700);
+  --color-point-orange-800: var(--point-orange-800);
+  --color-point-orange-900: var(--point-orange-900);
 
-  --color-warning: var(--warning);
-  --color-warning-hover: var(--warning-hover);
-  --color-warning-active: var(--warning-active);
+  /* Yellow */
+  --color-point-yellow-50: var(--point-yellow-50);
+  --color-point-yellow-100: var(--point-yellow-100);
+  --color-point-yellow-200: var(--point-yellow-200);
+  --color-point-yellow-300: var(--point-yellow-300);
+  --color-point-yellow-400: var(--point-yellow-400);
+  --color-point-yellow-500: var(--point-yellow-500);
+  --color-point-yellow-600: var(--point-yellow-600);
+  --color-point-yellow-700: var(--point-yellow-700);
+  --color-point-yellow-800: var(--point-yellow-800);
+  --color-point-yellow-900: var(--point-yellow-900);
 
-  --color-error: var(--error);
-  --color-error-hover: var(--error-hover);
-  --color-error-active: var(--error-active);
+  /* Green */
+  --color-point-green-50: var(--point-green-50);
+  --color-point-green-100: var(--point-green-100);
+  --color-point-green-200: var(--point-green-200);
+  --color-point-green-300: var(--point-green-300);
+  --color-point-green-400: var(--point-green-400);
+  --color-point-green-500: var(--point-green-500);
+  --color-point-green-600: var(--point-green-600);
+  --color-point-green-700: var(--point-green-700);
+  --color-point-green-800: var(--point-green-800);
+  --color-point-green-900: var(--point-green-900);
+
+  /* Blue */
+  --color-point-blue-50: var(--point-blue-50);
+  --color-point-blue-100: var(--point-blue-100);
+  --color-point-blue-200: var(--point-blue-200);
+  --color-point-blue-300: var(--point-blue-300);
+  --color-point-blue-400: var(--point-blue-400);
+  --color-point-blue-500: var(--point-blue-500);
+  --color-point-blue-600: var(--point-blue-600);
+  --color-point-blue-700: var(--point-blue-700);
+  --color-point-blue-800: var(--point-blue-800);
+  --color-point-blue-900: var(--point-blue-900);
 }
 
 /*
@@ -55,18 +99,56 @@ grid의 경우 grid-cols를 잡고 gap 12px로 잡았습니다.
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
-  --primary: #80f467;
-  --primary-hover: #51de3e;
-  --primary-active: rgb(0, 180, 40);
-  --success: #5ac0f3;
-  --success-hover: rgb(40, 133, 203);
-  --success-active: rgb(36 116 183);
-  --warning: #ffef45;
-  --warning-hover: rgb(253 220 62);
-  --warning-active: rgb(251 197 53);
-  --error: #ff4d59;
-  --error-hover: rgb(229 31 55);
-  --error-active: rgb(216 19 48);
+  --primary-50: #ffeaef;
+  --primary-100: #ffcad3;
+  --primary-200: #f9949a;
+  --primary-300: #f36772;
+  --primary-400: #ff3a4e;
+  --primary-500: #ff0f31;
+  --primary-600: #f70031;
+  --primary-700: #e4002b;
+  --primary-800: #d80023;
+  --primary-900: #c80016;
+  --point-orange-50: #fbeae7;
+  --point-orange-100: #ffcebd;
+  --point-orange-200: #ffae93;
+  --point-orange-300: #ff8f67;
+  --point-orange-400: #ff7646;
+  --point-orange-500: #ff5f25;
+  --point-orange-600: #f45921;
+  --point-orange-700: #e6521c;
+  --point-orange-800: #d84b18;
+  --point-orange-900: #bf3e11;
+  --point-yellow-50: #fefde6;
+  --point-yellow-100: #fdf8c2;
+  --point-yellow-200: #fbf399;
+  --point-yellow-300: #faee70;
+  --point-yellow-400: #f7e94e;
+  --point-yellow-500: #f8e72e;
+  --point-yellow-600: #f7d428;
+  --point-yellow-700: #f5bc1e;
+  --point-yellow-800: #f4a414;
+  --point-yellow-900: #f17b00;
+  --point-green-50: #edfee8;
+  --point-green-100: #d2fbc6;
+  --point-green-200: #b2f7a0;
+  --point-green-300: #8df374;
+  --point-green-400: #69ef4e;
+  --point-green-500: #3cea1d;
+  --point-green-600: #1fd911;
+  --point-green-700: #00c300;
+  --point-green-800: #00ae00;
+  --point-green-900: #008a00;
+  --point-blue-50: #e2f4fe;
+  --point-blue-100: #b5e4fb;
+  --point-blue-200: #86d2f8;
+  --point-blue-300: #5ac0f3;
+  --point-blue-400: #40b3f1;
+  --point-blue-500: #2fa5ee;
+  --point-blue-600: #2c97df;
+  --point-blue-700: #2885cb;
+  --point-blue-800: #2474b7;
+  --point-blue-900: #1c5495;
 }
 
 .grid-template {

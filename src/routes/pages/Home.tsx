@@ -1,10 +1,13 @@
 import ContainerCarousel from "@/components/Carousels/containerCarousel";
+import Maps from "@/components/Maps/Maps";
 import NavigationBar from "@/components/NavigationBar/navigationBar";
 import IndicatorTabs from "@/components/Tabs/indicatorTabs";
 import CakeCard from "@/components/ui/cakecard";
 import { Calendar } from "@/components/ui/calendar";
 import Category from "@/components/ui/category";
 import React from "react";
+
+import { categoryIcons } from "@/variants/icons";
 
 const Home = () => {
   const [date, setDate] = React.useState<Date>();
@@ -64,7 +67,7 @@ const Home = () => {
             프리미엄 재료로 만든 맞춤형 케이크를 경험해보세요.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-pink-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-pink-700 transition duration-200 shadow-lg">
+            <button className="bg-point-blue-400 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-pink-700 transition duration-200 shadow-lg">
               케이크 주문하기
             </button>
             <button className="border-2 border-pink-600 text-pink-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-pink-50 transition duration-200">
@@ -92,6 +95,12 @@ const Home = () => {
                 discount={3}
                 price={33500}
               ></CakeCard>
+              <div>
+                <img src={categoryIcons.baby} />
+                <img src={categoryIcons.wedding} />
+                <img src={categoryIcons.premium} />
+                <img src={categoryIcons.character} />
+              </div>
               <IndicatorTabs
                 tabsItems={[
                   {
@@ -134,6 +143,7 @@ const Home = () => {
               <Calendar mode="single" selected={date} onSelect={setDate} />
             </div>
           </div>
+          <Maps />
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-6">
