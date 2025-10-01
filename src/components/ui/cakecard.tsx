@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { cn } from "@/lib/utils";
+import { basicIcons } from "@/variants/icons";
 
 interface CakeCardProps extends React.ComponentProps<"div"> {
   name: string;
@@ -18,6 +19,10 @@ interface CakeCardProps extends React.ComponentProps<"div"> {
 }
 
 const CakeCard = (props: CakeCardProps) => {
+  const [like, setLike] = useState<boolean>(false);
+  const btnClick = () => {
+    setLike(!like);
+  };
   return (
     <div
       className={cn(
@@ -27,13 +32,21 @@ const CakeCard = (props: CakeCardProps) => {
       {...props}
     >
       {props.img ? (
-        <img
-          src={props.img}
+        <div
           className={cn(
-            " w-full h-[168px] contain-content",
+            `w-full h-[168px] contain-content relative bg-cover`,
             props.classNames?.img
           )}
-        />
+          style={{ backgroundImage: `url(${props.img})` }}
+        >
+          <img
+            src={like ? basicIcons.btnLike : basicIcons.btnUnlike}
+            width={40}
+            height={40}
+            onClick={btnClick}
+            className="absolute bottom-1 right-1.5"
+          />
+        </div>
       ) : (
         <div
           className={cn(
@@ -56,7 +69,7 @@ const CakeCard = (props: CakeCardProps) => {
         {props.content}
       </div>
       <div className="flex w-full justify-between">
-        <div className={cn("text-primary-active", props.classNames?.discount)}>
+        <div className={cn("text-primary-700", props.classNames?.discount)}>
           {props.discount}%
         </div>
         <div className={cn(props.classNames?.price)}>{props.price}원</div>
