@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-[#32C833] text-white shadow-xs hover:bg-[#32C833] focus:bg-[#00B428] active:bg-[#008F19]",
+          "bg-primary-500 text-white shadow-xs hover:bg-primary-600 focus:bg-primary-700 active:bg-primary-800",
       },
       size: {
         default: "h-12 px-3 py-4 min-w-[120px] has-[>svg]:px-3",
