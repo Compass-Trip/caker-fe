@@ -3,7 +3,6 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { NavLink } from "react-router";
@@ -21,16 +20,15 @@ export default function NavigationBar() {
     <NavigationMenu className="shadow-[inset_0_1px_0_#F1F1F1]">
       <NavigationMenuList>
         {navigationMenuItems.map((item) => (
-          <NavigationMenuItem key={item.title}>
+          <NavigationMenuItem className="h-full" key={item.title}>
             <NavigationMenuLink asChild>
               <NavLink
                 to={item.href}
                 className={({ isActive }) =>
                   cn(
-                    navigationMenuTriggerStyle(),
-                    "flex h-auto flex-col items-center px-5 py-2.5",
+                    "flex h-full w-full flex-col items-center justify-center",
                     isActive
-                      ? "text-primary font-semibold"
+                      ? "text-primary-400 font-semibold"
                       : "text-muted-foreground"
                   )
                 }
@@ -44,7 +42,7 @@ export default function NavigationBar() {
                   >
                     <item.icon
                       className={cn(
-                        "mb-1.5 h-5 w-5",
+                        "mb-0.5 h-5 w-5",
                         isActive ? "text-primary-400" : "text-muted-foreground"
                       )}
                     />

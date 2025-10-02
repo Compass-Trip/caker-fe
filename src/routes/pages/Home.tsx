@@ -7,38 +7,22 @@ import { Calendar } from "@/components/ui/calendar";
 import Category from "@/components/ui/category";
 import React from "react";
 
-import { basicIcons, categoryIcons } from "@/variants/icons";
+import { categoryIcons } from "@/variants/icons";
 import Header from "@/components/ui/header";
-import { useNavigate } from "react-router";
-import { Search, ShoppingCart } from "lucide-react";
+import HeaderSearch from "@/modules/common/HeaderSearch";
+import HeaderCart from "@/modules/common/HeaderCart";
+import HeaderBack from "@/modules/common/HeaderBack";
 
 const Home = () => {
-  const navigate = useNavigate();
   const [date, setDate] = React.useState<Date>();
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-orange-50">
       <Header
-        leftSide={
-          <img
-            src={basicIcons.logo}
-            height={28}
-            onClick={() => navigate("/")}
-          />
-        }
+        leftSide={<HeaderBack />}
         rightSide={
           <div className="flex gap-4 items-center">
-            <Search
-              width={24}
-              height={24}
-              stroke="#79767D"
-              onClick={() => navigate("/search")}
-            />
-            <ShoppingCart
-              width={24}
-              height={24}
-              stroke="#79767D"
-              onClick={() => navigate("/shopping")}
-            />
+            <HeaderSearch />
+            <HeaderCart num={1} />
           </div>
         }
         className="mb-2"
