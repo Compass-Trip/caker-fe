@@ -1,0 +1,16 @@
+export const cakeImages = {
+  cake1: "images/image_box.png",
+  cake2: "images/image_box-1.png",
+  cake3: "images/image_box-2.png",
+  cake4: "images/image_box-3.png",
+  cake5: "images/image_box-4.png",
+  cake6: "images/image_box-5.png",
+  cake7: "images/image_box-6.png",
+  cake8: "images/image_box-7.png",
+  cake9: "images/image_box-8.png",
+  cake10: "images/image_box-9.png",
+  cake11: "images/image_box-10.png",
+  cake12: "images/image_box-11.png",
+  cake13: "images/image_box-12.png",
+  cake14: "images/image_box-13.png",
+};
