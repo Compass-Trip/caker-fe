@@ -7,18 +7,18 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { NavLink } from "react-router";
-import { Heart, Home, Menu, User } from "lucide-react";
+import { Heart, Home, List, CircleUser } from "lucide-react";
 
 const navigationMenuItems = [
   { title: "홈", href: "/", icon: Home },
-  { title: "카테고리", href: "/blog", icon: Menu },
-  { title: "찜", href: "/docs", icon: Heart },
-  { title: "마이페이지", href: "/account", icon: User },
+  { title: "카테고리", href: "/category", icon: List },
+  { title: "찜", href: "/favorites", icon: Heart },
+  { title: "마이페이지", href: "/myPage", icon: CircleUser },
 ];
 
 export default function NavigationBar() {
   return (
-    <NavigationMenu>
+    <NavigationMenu className="shadow-[inset_0_1px_0_#F1F1F1]">
       <NavigationMenuList>
         {navigationMenuItems.map((item) => (
           <NavigationMenuItem key={item.title}>
@@ -39,13 +39,13 @@ export default function NavigationBar() {
                   <div
                     className={cn(
                       "flex flex-col justify-center items-center",
-                      isActive ? "text-primary" : "text-muted-foreground"
+                      isActive ? "text-primary-400" : "text-muted-foreground"
                     )}
                   >
                     <item.icon
                       className={cn(
                         "mb-1.5 h-5 w-5",
-                        isActive ? "text-primary" : "text-muted-foreground"
+                        isActive ? "text-primary-400" : "text-muted-foreground"
                       )}
                     />
                     {item.title}
