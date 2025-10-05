@@ -1,0 +1,15 @@
+export const iconList = [
+  { value: "birth", text: "생일" },
+  { value: "wedding", text: "웨딩/결혼" },
+  { value: "baby", text: "돌잔치" },
+  { value: "event", text: "기념일" },
+  { value: "graduation", text: "졸업/입학" },
+  { value: "company", text: "기업" },
+  { value: "season", text: "시즌" },
+  { value: "character", text: "캐릭터" },
+  { value: "fruit", text: "과일" },
+  { value: "flower", text: "플라워" },
+  { value: "smallCake", text: "한입" },
+  { value: "lunchbox", text: "도시락" },
+  { value: "photo", text: "포토" },
+] as const;
