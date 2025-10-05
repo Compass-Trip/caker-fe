@@ -3,14 +3,38 @@ import SearchResult from "@/modules/search/SearchResult";
 import { useState } from "react";
 
 const Search = () => {
-  // search할때의 header와 결과 header생긴게 다르다.
+  // 무조건 search창을 누르면 1로 되게끔 구현
+  const [index, setIndex] = useState(1);
   const [searchText, setSearchText] = useState<string>("");
-  const recentData: string[] = [];
+  const [recentData, setRecentData] = useState<string[]>([
+    "search",
+    "hi",
+    "and",
+  ]);
+  const onChangeRecent = (value: string, index?: number) => {
+    if (value === "total") {
+      setRecentData([]);
+    } else {
+      setRecentData((prev) => prev.filter((_, i) => i !== index));
+    }
+  };
 
   return (
     <div className="min-h-screen">
-      {/* <SearchFirst searchText={searchText} recentArray={recentData} /> */}
-      <SearchResult searchText="wedding" />
+      {index === 1 ? (
+        <SearchFirst
+          searchText={searchText}
+          recentArray={recentData}
+          onSelect={(value) => setSearchText(value)}
+          onIndexChange={() => setIndex(2)}
+          onChangeRecent={onChangeRecent}
+        />
+      ) : (
+        <SearchResult
+          searchText={searchText}
+          onIndexChange={() => setIndex(1)}
+        />
+      )}
     </div>
   );
 };
