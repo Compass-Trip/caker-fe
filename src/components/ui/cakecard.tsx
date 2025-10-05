@@ -3,6 +3,8 @@ import { cn } from "@/lib/utils";
 import { basicIcons } from "@/variants/icons";
 
 interface CakeCardProps extends React.ComponentProps<"div"> {
+  onLikeChange?: (liked: boolean) => void;
+  isLike: boolean;
   name: string;
   location: string;
   img?: string;
@@ -19,9 +21,10 @@ interface CakeCardProps extends React.ComponentProps<"div"> {
 }
 
 const CakeCard = (props: CakeCardProps) => {
-  const [like, setLike] = useState<boolean>(false);
+  const [like, setLike] = useState<boolean>(props.isLike);
   const btnClick = () => {
     setLike(!like);
+    props.onLikeChange?.(like);
   };
   return (
     <div
@@ -34,7 +37,7 @@ const CakeCard = (props: CakeCardProps) => {
       {props.img ? (
         <div
           className={cn(
-            `w-full h-[168px] contain-content relative bg-cover`,
+            `w-full h-[168px] contain-content relative bg-cover rounded-3xl`,
             props.classNames?.img
           )}
           style={{ backgroundImage: `url(${props.img})` }}

@@ -1,6 +1,6 @@
 import { cakeImages } from "@/variants/images";
 
-interface CakeData {
+export interface CakeData {
   storeName: string;
   location: string;
   image?: string;

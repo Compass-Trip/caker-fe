@@ -162,4 +162,7 @@ grid의 경우 grid-cols를 잡고 gap 12px로 잡았습니다.
   body {
     @apply bg-background text-foreground;
   }
+  div::-webkit-scrollbar {
+    display: none;
+  }
 }
