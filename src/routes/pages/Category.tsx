@@ -1,6 +1,7 @@
 import Header from "@/components/ui/header";
 import EventCategoryContainer from "@/modules/category/EventCategoryContainer";
 import EventCategoryList from "@/modules/category/EventCategoryList";
+import FilterChips from "@/modules/category/FilterChips";
 import FilterModal, { type FilterTypes } from "@/modules/category/FilterModal";
 import GridCategoryList from "@/modules/category/GridCategoryList";
 import HeaderBack from "@/modules/common/HeaderBack";
@@ -16,7 +17,7 @@ const Category = () => {
   const event = searchParams.get("event");
   const [open, setOpen] = useState(false);
   const [filterObj, setFilterObj] = useState<FilterTypes>({
-    area: "서울",
+    area: "",
     priceArr: [],
     minPrice: 0,
     maxPrice: Infinity,
@@ -95,8 +96,16 @@ const Category = () => {
               <section>
                 <EventCategoryList event={event} />
               </section>
-              <div onClick={() => setOpen(true)}>일단 누르기</div>
-              <EventCategoryContainer event={event} />
+              <EventCategoryContainer
+                event={event}
+                filterObj={filterObj}
+                chipPart={
+                  <FilterChips
+                    filterObj={filterObj}
+                    setOpen={() => setOpen(true)}
+                  />
+                }
+              />
             </>
           )}
         </>

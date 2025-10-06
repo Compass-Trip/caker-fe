@@ -100,11 +100,20 @@ const FilterModal = (props: FilterModalProps) => {
             ))}
           </div>
         </section>
-        <div>
-          <button onClick={() => props.changeFilterObj("reset", undefined)}>
+        <div className="w-full flex gap-2 absolute bottom-4 justify-center">
+          <button
+            className="w-[74px]"
+            onClick={() => props.changeFilterObj("reset", undefined)}
+          >
             초기화
           </button>
-          <Button>적용하기 {getFilterCnt()}</Button>
+          <Button
+            className="w-[265px]"
+            disabled={getFilterCnt() === 0}
+            onClick={() => props.setOpen(props.open)}
+          >
+            적용하기 {getFilterCnt()}
+          </Button>
         </div>
       </main>
     </div>
