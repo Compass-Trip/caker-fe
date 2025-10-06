@@ -30,15 +30,15 @@ const EventCategoryList = ({ event }: { event: string }) => {
 
               <div
                 className={cn(
-                  "relative text-xs w-full text-center",
+                  "relative text-xs w-full text-center truncate",
                   isActive && "text-primary-400"
                 )}
               >
                 {e.text}
-                {isActive && (
-                  <span className="absolute -bottom-[6px] left-0 w-full h-[2px] rounded-full bg-primary-400" />
-                )}
               </div>
+              {isActive && (
+                <span className="absolute -bottom-[6px] left-0 w-full h-[2px] rounded-full bg-primary-400 z-50" />
+              )}
             </div>
           );
         })}

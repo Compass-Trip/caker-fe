@@ -17,7 +17,9 @@ const GridCategoryList = () => {
           <div className="rounded-full w-full h-20 flex justify-center bg-[#FAF9FA]">
             <img src={categoryIcons[e.value]} width={60} height={60} />
           </div>
-          <div className="text-[15px] text-[#48464C]">{e.text}</div>
+          <div className="w-full text-center text-[15px] text-[#48464C] truncate">
+            {e.text}
+          </div>
         </div>
       ))}
     </div>

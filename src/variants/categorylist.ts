@@ -5,7 +5,7 @@ export const iconList = [
   { value: "event", text: "기념일" },
   { value: "graduation", text: "졸업/입학" },
   { value: "company", text: "기업" },
-  { value: "season", text: "시즌" },
+  { value: "season", text: "시즌/홀리데이" },
   { value: "character", text: "캐릭터" },
   { value: "fruit", text: "과일" },
   { value: "flower", text: "플라워" },

@@ -19,7 +19,7 @@ const CategoryList = () => {
             <div className="rounded-full w-full h-14 flex justify-center bg-[#FAF9FA]">
               <img src={categoryIcons[e.value]} width={40} height={40} />
             </div>
-            <div className="text-xs">{e.text}</div>
+            <div className="w-full text-center text-xs truncate">{e.text}</div>
           </div>
         ))}
       </div>

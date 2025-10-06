@@ -9,7 +9,7 @@ export interface CakeData {
   price: number;
   isLiked: boolean;
   eventCategory: string;
-  themeCategory: string;
+  themeCategory: string[];
 }
 
 export const mockCakes: CakeData[] = [
@@ -22,7 +22,7 @@ export const mockCakes: CakeData[] = [
     discount: 10,
     isLiked: true,
     eventCategory: "생일",
-    themeCategory: "과일",
+    themeCategory: ["큐트"],
   },
   {
     storeName: "Happy Wedding Cake",
@@ -33,7 +33,7 @@ export const mockCakes: CakeData[] = [
     discount: 15,
     isLiked: false,
     eventCategory: "웨딩/결혼",
-    themeCategory: "프리미엄/럭셔리",
+    themeCategory: ["프리미엄/럭셔리"],
   },
   {
     storeName: "Mini Joy",
@@ -44,7 +44,7 @@ export const mockCakes: CakeData[] = [
     discount: 5,
     isLiked: true,
     eventCategory: "기념일",
-    themeCategory: "한입",
+    themeCategory: ["3D입체, 내추럴/오가닉"],
   },
   {
     storeName: "Caker Seoul",
@@ -55,7 +55,7 @@ export const mockCakes: CakeData[] = [
     discount: 20,
     isLiked: false,
     eventCategory: "기업",
-    themeCategory: "포토",
+    themeCategory: ["미니멀/모던"],
   },
   {
     storeName: "Flower Cake Studio",
@@ -66,7 +66,7 @@ export const mockCakes: CakeData[] = [
     discount: 12,
     isLiked: true,
     eventCategory: "졸업/입학",
-    themeCategory: "플라워",
+    themeCategory: ["미니멀/모던"],
   },
   {
     storeName: "Cherry Blossom Cake",
@@ -77,7 +77,7 @@ export const mockCakes: CakeData[] = [
     discount: 8,
     isLiked: false,
     eventCategory: "생일",
-    themeCategory: "과일",
+    themeCategory: ["큐트", "미니멀/모던"],
   },
   {
     storeName: "Luxury Cake",
@@ -88,7 +88,7 @@ export const mockCakes: CakeData[] = [
     discount: 18,
     isLiked: false,
     eventCategory: "시즌/홀리데이",
-    themeCategory: "프리미엄/럭셔리",
+    themeCategory: ["프리미엄/럭셔리", "3D입체"],
   },
   {
     storeName: "Bear Cake Shop",
@@ -99,7 +99,7 @@ export const mockCakes: CakeData[] = [
     discount: 7,
     isLiked: true,
     eventCategory: "돌잔치",
-    themeCategory: "캐릭터",
+    themeCategory: ["큐트"],
   },
   {
     storeName: "Holiday Cake Factory",
@@ -110,7 +110,7 @@ export const mockCakes: CakeData[] = [
     discount: 25,
     isLiked: true,
     eventCategory: "시즌/홀리데이",
-    themeCategory: "플라워",
+    themeCategory: ["내추럴/오가닉"],
   },
   {
     storeName: "Cute Bakes",
@@ -121,7 +121,7 @@ export const mockCakes: CakeData[] = [
     discount: 10,
     isLiked: false,
     eventCategory: "생일",
-    themeCategory: "큐트",
+    themeCategory: ["큐트"],
   },
   {
     storeName: "Wedding Bell",
@@ -132,7 +132,7 @@ export const mockCakes: CakeData[] = [
     discount: 12,
     isLiked: false,
     eventCategory: "웨딩/결혼",
-    themeCategory: "미니멀/모던",
+    themeCategory: ["미니멀/모던", "프리미엄/럭셔리"],
   },
   {
     storeName: "Photo Memory Cake",
@@ -143,7 +143,7 @@ export const mockCakes: CakeData[] = [
     discount: 6,
     isLiked: true,
     eventCategory: "기념일",
-    themeCategory: "포토",
+    themeCategory: ["미니멀/모던", "프리미엄/럭셔리"],
   },
   {
     storeName: "3D Cake Lab",
@@ -154,7 +154,7 @@ export const mockCakes: CakeData[] = [
     discount: 14,
     isLiked: true,
     eventCategory: "기업",
-    themeCategory: "3D 입체",
+    themeCategory: ["3D 입체"],
   },
   {
     storeName: "Student Celebration",
@@ -165,7 +165,7 @@ export const mockCakes: CakeData[] = [
     discount: 9,
     isLiked: false,
     eventCategory: "졸업/입학",
-    themeCategory: "플라워",
+    themeCategory: ["미니멀/모던"],
   },
   {
     storeName: "Minimal Cake Shop",
@@ -176,7 +176,7 @@ export const mockCakes: CakeData[] = [
     discount: 5,
     isLiked: false,
     eventCategory: "기념일",
-    themeCategory: "미니멀/모던",
+    themeCategory: ["미니멀/모던", "프리미엄/럭셔리"],
   },
   {
     storeName: "Company Party Cake",
@@ -187,7 +187,7 @@ export const mockCakes: CakeData[] = [
     discount: 20,
     isLiked: true,
     eventCategory: "기업",
-    themeCategory: "프리미엄/럭셔리",
+    themeCategory: ["프리미엄/럭셔리", "3D입체"],
   },
   {
     storeName: "Cute Heart",
@@ -198,7 +198,7 @@ export const mockCakes: CakeData[] = [
     discount: 10,
     isLiked: true,
     eventCategory: "기념일",
-    themeCategory: "큐트",
+    themeCategory: ["큐트"],
   },
   {
     storeName: "Fruit Fresh Cake",
@@ -209,7 +209,7 @@ export const mockCakes: CakeData[] = [
     discount: 15,
     isLiked: false,
     eventCategory: "생일",
-    themeCategory: "과일",
+    themeCategory: ["큐트"],
   },
   {
     storeName: "One Bite Cake",
@@ -220,7 +220,7 @@ export const mockCakes: CakeData[] = [
     discount: 7,
     isLiked: false,
     eventCategory: "돌잔치",
-    themeCategory: "한입",
+    themeCategory: ["미니멀/모던"],
   },
   {
     storeName: "Season Special",
@@ -231,7 +231,7 @@ export const mockCakes: CakeData[] = [
     discount: 22,
     isLiked: true,
     eventCategory: "시즌/홀리데이",
-    themeCategory: "플라워",
+    themeCategory: ["미니멀/모던"],
   },
   {
     storeName: "Retro Cake",
@@ -242,7 +242,7 @@ export const mockCakes: CakeData[] = [
     discount: 13,
     isLiked: true,
     eventCategory: "기념일",
-    themeCategory: "미니멀/모던",
+    themeCategory: ["미니멀/모던"],
   },
   {
     storeName: "Character Party",
@@ -253,7 +253,7 @@ export const mockCakes: CakeData[] = [
     discount: 10,
     isLiked: false,
     eventCategory: "생일",
-    themeCategory: "캐릭터",
+    themeCategory: ["큐트", "내추럴/오가닉"],
   },
   {
     storeName: "Luxury Photo Cake",
@@ -264,7 +264,7 @@ export const mockCakes: CakeData[] = [
     discount: 18,
     isLiked: true,
     eventCategory: "기업",
-    themeCategory: "포토",
+    themeCategory: ["내추럴/오가닉"],
   },
   {
     storeName: "Cupcake Town",
@@ -275,7 +275,7 @@ export const mockCakes: CakeData[] = [
     discount: 8,
     isLiked: false,
     eventCategory: "기념일",
-    themeCategory: "한입",
+    themeCategory: ["프리미엄/럭셔리", "내추럴/오가닉"],
   },
   {
     storeName: "Elegant Rose",
@@ -286,7 +286,7 @@ export const mockCakes: CakeData[] = [
     discount: 12,
     isLiked: true,
     eventCategory: "기념일",
-    themeCategory: "플라워",
+    themeCategory: ["프리미엄/럭셔리", "내추럴/오가닉"],
   },
   {
     storeName: "Graduation Special",
@@ -297,7 +297,7 @@ export const mockCakes: CakeData[] = [
     discount: 9,
     isLiked: false,
     eventCategory: "졸업/입학",
-    themeCategory: "큐트",
+    themeCategory: ["큐트"],
   },
   {
     storeName: "Holiday Premium",
@@ -308,7 +308,7 @@ export const mockCakes: CakeData[] = [
     discount: 20,
     isLiked: true,
     eventCategory: "시즌/홀리데이",
-    themeCategory: "프리미엄/럭셔리",
+    themeCategory: ["프리미엄/럭셔리"],
   },
   {
     storeName: "City Cake Box",
@@ -319,7 +319,7 @@ export const mockCakes: CakeData[] = [
     discount: 6,
     isLiked: false,
     eventCategory: "기업",
-    themeCategory: "도시락",
+    themeCategory: ["미니멀/모던"],
   },
   {
     storeName: "Rainbow Cake",
@@ -330,6 +330,6 @@ export const mockCakes: CakeData[] = [
     discount: 15,
     isLiked: true,
     eventCategory: "기념일",
-    themeCategory: "3D 입체",
+    themeCategory: ["3D 입체"],
   },
 ];
