@@ -2,17 +2,22 @@ import { mockCakes } from "@/assets/data/cakeList";
 import Header from "@/components/ui/header";
 import { pageIcons } from "@/variants/icons";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { ChevronDown, Search } from "lucide-react";
 import HeaderBack from "../common/HeaderBack";
 import HeaderCart from "../common/HeaderCart";
 import GridCakeList from "../home/GridCakeList";
+import { cn } from "@/lib/utils";
 
 const SearchResult = ({
   searchText,
   onIndexChange,
+  sort,
+  onOpen,
 }: {
   searchText: string;
   onIndexChange?: () => void;
+  sort: string;
+  onOpen: () => void;
 }) => {
   const mockData = mockCakes.filter(
     (e) =>
@@ -47,7 +52,17 @@ const SearchResult = ({
           <div className="w-full min-h-[700px] px-[14px]">
             <div className="w-full py-2 flex justify-between">
               <div>총 {mockData.length}개</div>
-              <div>인기순</div>
+              <div className="flex gap-2">
+                <div
+                  className={cn(
+                    "min-w-12 flex justify-center items-center gap-1 h-8 rounded-2xl py-1 px-2"
+                  )}
+                  onClick={() => onOpen()}
+                >
+                  {sort}
+                  <ChevronDown width={20} height={20} stroke="#79767D" />
+                </div>
+              </div>
             </div>
             <GridCakeList items={mockData} />
           </div>

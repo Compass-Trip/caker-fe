@@ -58,3 +58,10 @@ export const THEME_FILTERS = [
   { id: "3d", name: "3D 입체" },
   { id: "organic", name: "내추럴/오가닉" },
 ];
+
+export const SORT_FILTERS = [
+  { value: "popular", label: "인기순" },
+  { value: "recent", label: "최신순" },
+  { value: "lower", label: "낮은가격순" },
+  { value: "higher", label: "높은가격순" },
+];

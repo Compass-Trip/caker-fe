@@ -1,3 +1,4 @@
+import SortModal from "@/modules/common/SortModal";
 import SearchFirst from "@/modules/search/SearchFirst";
 import SearchResult from "@/modules/search/SearchResult";
 import { useState } from "react";
@@ -11,6 +12,8 @@ const Search = () => {
     "hi",
     "and",
   ]);
+  const [sort, setSort] = useState("인기순");
+  const [modalOpen, setModalOpen] = useState(false);
   const onChangeRecent = (value: string, index?: number) => {
     if (value === "total") {
       setRecentData([]);
@@ -21,6 +24,13 @@ const Search = () => {
 
   return (
     <div className="min-h-screen">
+      {modalOpen && (
+        <SortModal
+          value={sort}
+          onClose={() => setModalOpen(false)}
+          onChange={(v: string) => setSort(v)}
+        />
+      )}
       {index === 1 ? (
         <SearchFirst
           searchText={searchText}
@@ -31,6 +41,8 @@ const Search = () => {
         />
       ) : (
         <SearchResult
+          sort={sort}
+          onOpen={() => setModalOpen(true)}
           searchText={searchText}
           onIndexChange={() => setIndex(1)}
         />

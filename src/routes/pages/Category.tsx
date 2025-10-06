@@ -8,6 +8,7 @@ import HeaderBack from "@/modules/common/HeaderBack";
 import HeaderCart from "@/modules/common/HeaderCart";
 import HeaderLogo from "@/modules/common/HeaderLogo";
 import HeaderSearch from "@/modules/common/HeaderSearch";
+import SortModal from "@/modules/common/SortModal";
 import { PRICE_RANGES, type PriceRange } from "@/variants/filterOptions";
 import { useState } from "react";
 import { useSearchParams } from "react-router";
@@ -16,6 +17,8 @@ const Category = () => {
   const [searchParams] = useSearchParams();
   const event = searchParams.get("event");
   const [open, setOpen] = useState(false);
+  const [sort, setSort] = useState("인기순");
+  const [modalOpen, setModalOpen] = useState(false);
   const [filterObj, setFilterObj] = useState<FilterTypes>({
     area: "",
     priceArr: [],
@@ -73,6 +76,13 @@ const Category = () => {
     <div className="min-h-screen">
       {event ? (
         <>
+          {modalOpen && (
+            <SortModal
+              value={sort}
+              onClose={() => setModalOpen(false)}
+              onChange={(v: string) => setSort(v)}
+            />
+          )}
           {open ? (
             <FilterModal
               open={open}
@@ -97,6 +107,8 @@ const Category = () => {
                 <EventCategoryList event={event} />
               </section>
               <EventCategoryContainer
+                sort={sort}
+                onOpen={() => setModalOpen(true)}
                 event={event}
                 filterObj={filterObj}
                 chipPart={
