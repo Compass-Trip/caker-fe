@@ -6,9 +6,13 @@ import { Button } from "@/components/ui/button";
 
 interface MyPageOrderListProps {
   onClose: () => void;
+  onOrderOpen: () => void;
 }
 
-const MyPageOrderListPage = ({ onClose }: MyPageOrderListProps) => {
+const MyPageOrderListPage = ({
+  onClose,
+  onOrderOpen,
+}: MyPageOrderListProps) => {
   const mockData = mockCakes.slice(0, 5);
   return (
     <div className="w-full inset-0 min-h-screen fixed top-0 left-0 z-[200] bg-white overflow-y-scroll">
@@ -30,14 +34,12 @@ const MyPageOrderListPage = ({ onClose }: MyPageOrderListProps) => {
             <article className="py-4">
               <div className="flex w-full justify-between items-center">
                 <div className="text-sm text-[#79767D]">25.09.20</div>
-                <div className="text-[#79767D] text-xs flex gap-1 items-center">
-                  전체보기{" "}
-                  <ChevronRight
-                    width={20}
-                    height={20}
-                    stroke="#79767D"
-                    // onClick={() => onOrderListOpen()}
-                  />
+                <div
+                  className="text-[#79767D] text-xs flex gap-1 items-center"
+                  onClick={() => onClose()}
+                >
+                  주문상세{" "}
+                  <ChevronRight width={20} height={20} stroke="#79767D" />
                 </div>
               </div>
               <MyPageOrderCard
@@ -60,7 +62,7 @@ const MyPageOrderListPage = ({ onClose }: MyPageOrderListProps) => {
                 <Button
                   variant="outline"
                   className="flex-1"
-                  onClick={() => onClose()}
+                  onClick={() => onOrderOpen()}
                 >
                   주문현황
                 </Button>

@@ -35,7 +35,7 @@ const MyPageMain = ({
       <div className="w-full h-1 bg-[#eeeeef]" />
       <div className="w-full py-6 ">
         <div className="flex w-full justify-between items-center">
-          <div className="font-bold text-bold">주문 조회</div>
+          <div className="font-bold text-gray-700">주문 조회</div>
           <div className="text-[#79767D] text-xs">최근 1개월</div>
         </div>
         <div className="flex w-full items-center justify-center">
@@ -51,12 +51,7 @@ const MyPageMain = ({
                 <div className="text-sm">{stringOrderArray[i]}</div>
               </div>
               {i !== orderArray.length - 1 ? (
-                <ChevronRight
-                  width={24}
-                  height={24}
-                  stroke="#79767D"
-                  onClick={() => onOrderListOpen()}
-                />
+                <ChevronRight width={24} height={24} stroke="#79767D" />
               ) : (
                 <></>
               )}
@@ -68,15 +63,12 @@ const MyPageMain = ({
       <div className="flex-1 min-h-0">
         <div className="flex flex-col py-6 gap-4">
           <div className="flex w-full justify-between items-center">
-            <div className="font-bold text-bold">주문 조회</div>
-            <div className="text-[#79767D] text-xs flex gap-1 items-center">
-              전체보기{" "}
-              <ChevronRight
-                width={20}
-                height={20}
-                stroke="#79767D"
-                onClick={() => onOrderListOpen()}
-              />
+            <div className="font-bold text-gray-700">주문 내역</div>
+            <div
+              className="text-[#79767D] text-xs flex gap-1 items-center"
+              onClick={() => onOrderListOpen()}
+            >
+              전체보기 <ChevronRight width={20} height={20} stroke="#79767D" />
             </div>
           </div>
           <div className="overflow-y-scroll">

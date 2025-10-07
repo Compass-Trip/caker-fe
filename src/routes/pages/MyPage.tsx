@@ -6,6 +6,7 @@ import HeaderSearch from "@/modules/common/HeaderSearch";
 import MyPageMain from "@/modules/mypage/MyPageMain";
 import MyPageModal from "@/modules/mypage/MyPageModal";
 import MyPageOrderListPage from "@/modules/mypage/MyPageOrderListPage";
+import OrderStatus from "@/modules/mypage/OrderStatus";
 import { useState } from "react";
 
 const MyPage = () => {
@@ -20,7 +21,13 @@ const MyPage = () => {
         <MyPageModal type={modalType} onClose={() => setModal(false)} />
       )}
       {orderListModal && (
-        <MyPageOrderListPage onClose={() => setOrderListModal(false)} />
+        <MyPageOrderListPage
+          onClose={() => setOrderListModal(false)}
+          onOrderOpen={() => setOrderModal(true)}
+        />
+      )}
+      {orderModal && (
+        <OrderStatus id={1} onClose={() => setOrderModal(false)} />
       )}
       <Header
         leftSide={<HeaderLogo />}

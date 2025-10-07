@@ -37,3 +37,13 @@ export const basicIcons = {
   btnLike: "/icons/card/buttonLike.svg",
   btnUnlike: "icons/card/buttonUnlike.svg",
 };
+
+export type IconKey = "call" | "clock" | "location" | "map" | "site";
+
+export const myPageIcons: Record<IconKey, string> = {
+  call: "/icons/myPage/call.svg",
+  clock: "/icons/myPage/clock.svg",
+  location: "/icons/myPage/location.svg",
+  map: "/icons/myPage/map.svg",
+  site: "/icons/myPage/site.svg",
+};
