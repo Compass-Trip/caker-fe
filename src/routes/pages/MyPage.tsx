@@ -3,6 +3,7 @@ import Header from "@/components/ui/header";
 import HeaderCart from "@/modules/common/HeaderCart";
 import HeaderLogo from "@/modules/common/HeaderLogo";
 import HeaderSearch from "@/modules/common/HeaderSearch";
+import MyPageEdit from "@/modules/mypage/MyPageEdit";
 import MyPageMain from "@/modules/mypage/MyPageMain";
 import MyPageModal from "@/modules/mypage/MyPageModal";
 import MyPageOrderListPage from "@/modules/mypage/MyPageOrderListPage";
@@ -29,6 +30,7 @@ const MyPage = () => {
       {orderModal && (
         <OrderStatus id={1} onClose={() => setOrderModal(false)} />
       )}
+      {editModal && <MyPageEdit onClose={() => setEditModal(false)} />}
       <Header
         leftSide={<HeaderLogo />}
         rightSide={
