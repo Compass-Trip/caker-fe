@@ -9,7 +9,7 @@ interface SortModalProps {
 
 const SortModal = (props: SortModalProps) => {
   return (
-    <div className="w-full inset-0 min-h-screen absolute top-0 left-0 z-[200] bg-black/50">
+    <div className="w-full inset-0 min-h-screen fixed top-0 left-0 z-[200] bg-black/50">
       <div
         role="dialog"
         aria-modal="true"
