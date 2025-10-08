@@ -1,19 +1,11 @@
 import { useState } from 'react';
 import IndicatorTabs from '@/components/Tabs/indicatorTabs';
 import MainLayout from '@/assets/layouts/MainLayout';
-import HeaderBack from '@/modules/common/HeaderBack';
-import HeaderCart from '@/modules/common/HeaderCart';
-// import OrderOptionsSection from '@/modules/Order/OrderOptionsSection';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
-import { Card, CardContent } from '@/components/ui/card';
-
 import ProductInfo from '@/modules/Order/ProductInfo';
+import StoreInfo from '@/modules/Order/StoreInfo';
+import CakeCarousel from '@/modules/Order/CakeCarousel';
+import OrderOptionsSection from '@/modules/Order/OrderOptionsSection';
+import OrderHeader from '@/modules/Order/OrderHeader';
 
 const Order = () => {
   const [showOptions, setShowOptions] = useState(false);
@@ -25,41 +17,10 @@ const Order = () => {
   return (
     <MainLayout>
       <div className="w-full max-w-[375px] mx-auto">
-        <header className="w-full flex items-center justify-between py-4 border-b border-[#EEEEEF]">
-          <div className="w-10 h-10 flex items-center justify-center">
-            <HeaderBack />
-          </div>
-          <div className="text-[17px] font-semibold text-[#2D2A32]">
-            상품정보
-          </div>
-          <div className="w-10 h-10 flex items-center justify-center">
-            <HeaderCart />
-          </div>
-        </header>
+        <OrderHeader />
 
-        <section className="relative">
-          <div className=" bg-[#FAF9FA] ">
-            {' '}
-            <Carousel>
-              <CarouselContent>
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <CarouselItem key={index}>
-                    <div className="w-full h-full">
-                      <Card>
-                        <CardContent className="flex aspect-square items-center justify-center">
-                          <span className="text-4xl font-semibold">
-                            {index + 1}
-                          </span>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="absolute left-4 top-1/2" />
-              <CarouselNext className="absolute right-4 top-1/2" />
-            </Carousel>
-          </div>
+        <section>
+          <CakeCarousel />
         </section>
 
         <section>
@@ -106,14 +67,17 @@ const Order = () => {
                 </div>
               </div>
             </div>
-
-            <div className="w-[375px] h-1 bg-[#EEEEEF] mx-[-14px]" />
-
+          </div>
+        </section>
+        {showOptions ? (
+          <OrderOptionsSection isVisible={showOptions} />
+        ) : (
+          <div>
             <IndicatorTabs
               tabsItems={[
                 {
                   label: '상품정보',
-                  value: 'info',
+                  value: 'product info',
                   content: <ProductInfo />,
                 },
                 {
@@ -127,12 +91,8 @@ const Order = () => {
                 },
                 {
                   label: '매장정보',
-                  value: 'store',
-                  content: (
-                    <div className="py-6 text-[#79767D]">
-                      매장 정보는 준비 중입니다.
-                    </div>
-                  ),
+                  value: 'store info',
+                  content: <StoreInfo />,
                 },
               ]}
               classNames={{
@@ -143,39 +103,36 @@ const Order = () => {
                 content: 'mt-0',
               }}
             />
+
+            <div className="w-full flex items-center gap-2 py-2 px-4">
+              <button
+                className="w-12 h-12  border-none flex items-center justify-center"
+                onClick={() => setLike(!like)}
+              >
+                {like ? (
+                  <img
+                    src="/public/icons/card/buttonLike.svg"
+                    alt="like"
+                    className="w-24 h-24"
+                  />
+                ) : (
+                  <img
+                    src="/public/icons/card/buttonUnlike.svg"
+                    alt="unlike"
+                    className="w-24 h-24"
+                  />
+                )}
+              </button>
+              <button
+                className="flex-1 h-12 bg-[#FF0F31] text-white rounded-lg font-medium hover:bg-[#E4002B] transition-colors"
+                onClick={handleOrderClick}
+              >
+                주문하기
+              </button>
+            </div>
           </div>
-        </section>
-
-        <div className="w-full flex items-center gap-2 py-4">
-          <button
-            className="w-12 h-12 rounded-[8px] border-none flex items-center justify-center"
-            onClick={() => setLike(!like)}
-          >
-            {like ? (
-              <img
-                src="/public/icons/card/buttonLike.svg"
-                alt="like"
-                className="w-24 h-24"
-              />
-            ) : (
-              <img
-                src="/public/icons/card/buttonUnlike.svg"
-                alt="like"
-                className="w-24 h-24"
-              />
-            )}
-          </button>
-          <button
-            className="flex-1 h-12 bg-[#FF0F31] text-white rounded-lg font-medium hover:bg-[#E4002B] transition-colors"
-            onClick={handleOrderClick}
-          >
-            주문하기
-          </button>
-        </div>
+        )}
       </div>
-
-      {/* Order Options Section
-      <OrderOptionsSection isVisible={showOptions} /> */}
     </MainLayout>
   );
 };

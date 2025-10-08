@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 interface OrderOptionsSectionProps {
   isVisible: boolean;
@@ -8,8 +14,6 @@ interface OrderOptionsSectionProps {
 const OrderOptionsSection: React.FC<OrderOptionsSectionProps> = ({
   isVisible,
 }) => {
-  const [selectedDate, setSelectedDate] = useState<string>('');
-  const [selectedTime, setSelectedTime] = useState<string>('');
   const [selectedSize, setSelectedSize] = useState<string>('0호 10cm');
   const [selectedSheet, setSelectedSheet] = useState<string>('바닐라');
   const [selectedFilling, setSelectedFilling] = useState<string>('딸기잼');
@@ -61,431 +65,418 @@ const OrderOptionsSection: React.FC<OrderOptionsSectionProps> = ({
 
   return (
     <section className="w-full max-w-[375px] mx-auto bg-white">
-      {/* Header */}
-      <header className="w-full flex items-center justify-between gap-4 py-4 border-b border-[#EEEEEF] px-4">
-        <div className="w-10 h-10 flex items-center justify-center">
-          <div className="text-[17px] font-semibold text-[#2D2A32]">
-            옵션선택
-          </div>
-        </div>
-      </header>
-
-      {/* Product Info */}
-      <div className="px-4 py-4 border-b border-[#EEEEEF]">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-full bg-[#EEEEEF]" />
-          <div className="flex flex-col">
-            <div className="text-[15px] leading-[22px] text-[#48464C]">
-              스웨이드 베이커리 청담
-            </div>
-            <div className="text-[12px] leading-[16px] tracking-[0.0252em] text-[#79767D]">
-              서울 강남구
-            </div>
-          </div>
-        </div>
-
-        <div className="text-[16px] leading-[24px] text-black mb-3">
-          인기폭발 주문제작 레터링케이크
-        </div>
-
-        <div className="flex items-end gap-3">
-          <div className="flex items-center gap-1 text-[#79767D]">
-            <span className="text-[16px] leading-[24px]">35,000</span>
-            <span className="text-[16px] leading-[24px]">원</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1">
-              <span className="text-[16px] leading-[24px] font-bold text-[#E4002B]">
-                3
-              </span>
-              <span className="text-[16px] leading-[24px] font-bold text-[#F70031]">
-                %
-              </span>
-            </div>
-            <div className="flex items-center gap-1">
-              <span className="text-[16px] leading-[24px] font-bold text-[#2D2A32]">
-                33,000
-              </span>
-              <span className="text-[16px] leading-[24px] text-[#79767D]">
-                원
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Calendar Section */}
-      <div className="px-4 py-4">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <div className="text-[18px] font-bold text-[#2D2A32]">픽업날짜</div>
-            <div className="text-[14px] text-[#AEA9B1]">(최소2일 후)</div>
-          </div>
-          <div className="bg-[#E2F4FE] text-[#2474B7] px-2 py-1 rounded text-[12px]">
-            필수
-          </div>
-        </div>
-
-        {/* Calendar */}
-        <div className="bg-white border border-[#EEEEEF] rounded-lg p-4 mb-4">
-          <div className="flex items-center justify-between mb-4">
-            <button className="w-10 h-10 flex items-center justify-center">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M15 18l-6-6 6-6"
-                  stroke="#79767D"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-            <div className="text-[18px] font-medium text-black">2025년 9월</div>
-            <button className="w-10 h-10 flex items-center justify-center">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M9 6l6 6-6 6"
-                  stroke="#79767D"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </div>
-
-          {/* Calendar Grid */}
-          <div className="grid grid-cols-7 gap-2 mb-4">
-            {['일', '월', '화', '수', '목', '금', '토'].map((day) => (
-              <div
-                key={day}
-                className={`text-center py-2 text-[13px] ${
-                  day === '일' ? 'text-[#2FA5EE]' : 'text-black'
-                }`}
-              >
-                {day}
+      <Accordion
+        type="multiple"
+        defaultValue={[
+          'pickup-date',
+          'cake-size',
+          'cake-flavor',
+          'design',
+          'packaging',
+          'ice-pack',
+        ]}
+        className="w-full"
+      >
+        {/* 픽업날짜 섹션 */}
+        <AccordionItem
+          value="pickup-date"
+          className="border-b border-[#EEEEEF]"
+        >
+          <AccordionTrigger className="px-4 py-4 hover:no-underline">
+            <div className="flex items-center gap-2">
+              <div className="text-[18px] font-bold text-[#2D2A32]">
+                픽업날짜
               </div>
-            ))}
-
-            {/* Calendar dates */}
-            {[
-              31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
-              19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-            ].map((date) => (
-              <button
-                key={date}
-                className={`w-9 h-9 rounded-full text-[16px] ${
-                  date === 10
-                    ? 'bg-[#FF3A4E] text-white'
-                    : date === 31 ||
-                      date === 7 ||
-                      date === 14 ||
-                      date === 21 ||
-                      date === 28
-                    ? 'text-[#2FA5EE]'
-                    : 'text-[#2D2A32] hover:bg-gray-100'
-                }`}
-                onClick={() => setSelectedDate(`${date}일`)}
-              >
-                {date}
-              </button>
-            ))}
-          </div>
-
-          {/* Time Slots */}
-          <div className="space-y-4">
-            <div>
-              <div className="text-[14px] text-[#2F2C45] mb-2">오전</div>
-              <div className="flex flex-wrap gap-2">
-                {['10:00', '10:30', '11:00', '11:30'].map((time) => (
-                  <button
-                    key={time}
-                    className="px-6 py-4 border border-[#EEEEEF] rounded-lg text-[16px] hover:border-[#FF3A4E]"
-                    onClick={() => setSelectedTime(time)}
-                  >
-                    {time}
+              <div className="text-[14px] text-[#AEA9B1]">(최소2일 후)</div>
+            </div>
+            <div className="bg-[#E2F4FE] text-[#2474B7] px-2 py-1 rounded text-[12px]">
+              필수
+            </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="px-4 pb-4">
+              {/* Calendar */}
+              <div className="bg-white border border-[#EEEEEF] rounded-lg p-4">
+                <div className="flex items-center justify-between mb-4">
+                  <button className="w-10 h-10 flex items-center justify-center">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M15 18l-6-6 6-6"
+                        stroke="#79767D"
+                        strokeWidth="1.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <div className="text-[14px] text-[#2F2C45] mb-2">오후</div>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  '12:00',
-                  '12:30',
-                  '1:00',
-                  '1:30',
-                  '2:00',
-                  '2:30',
-                  '3:00',
-                  '3:30',
-                  '4:00',
-                  '4:30',
-                  '5:00',
-                  '5:30',
-                ].map((time) => (
-                  <button
-                    key={time}
-                    className={`px-6 py-4 border rounded-lg text-[16px] ${
-                      time === '1:00'
-                        ? 'bg-[#FF3A4E] text-white border-[#FF3A4E]'
-                        : 'border-[#EEEEEF] hover:border-[#FF3A4E]'
-                    }`}
-                    onClick={() => setSelectedTime(time)}
-                  >
-                    {time}
+                  <div className="text-[18px] font-medium text-black">
+                    2025년 9월
+                  </div>
+                  <button className="w-10 h-10 flex items-center justify-center">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M9 6l6 6-6 6"
+                        stroke="#79767D"
+                        strokeWidth="1.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </button>
-                ))}
+                </div>
+
+                {/* Calendar Grid */}
+                <div className="grid grid-cols-7 gap-2 mb-4">
+                  {['일', '월', '화', '수', '목', '금', '토'].map((day) => (
+                    <div
+                      key={day}
+                      className={`text-center py-2 text-[13px] ${
+                        day === '일' ? 'text-[#2FA5EE]' : 'text-black'
+                      }`}
+                    >
+                      {day}
+                    </div>
+                  ))}
+
+                  {/* Calendar dates */}
+                  {[
+                    31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+                    17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+                  ].map((date) => (
+                    <button
+                      key={date}
+                      className={`w-9 h-9 rounded-full text-[16px] ${
+                        date === 10
+                          ? 'bg-[#FF3A4E] text-white'
+                          : date === 31 ||
+                            date === 7 ||
+                            date === 14 ||
+                            date === 21 ||
+                            date === 28
+                          ? 'text-[#2FA5EE]'
+                          : 'text-[#2D2A32] hover:bg-gray-100'
+                      }`}
+                      onClick={() => {}}
+                    >
+                      {date}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Time Slots */}
+                <div className="space-y-4">
+                  <div>
+                    <div className="text-[14px] text-[#2F2C45] mb-2">오전</div>
+                    <div className="flex flex-wrap gap-2">
+                      {['10:00', '10:30', '11:00', '11:30'].map((time) => (
+                        <button
+                          key={time}
+                          className="px-6 py-4 border border-[#EEEEEF] rounded-lg text-[16px] hover:border-[#FF3A4E]"
+                          onClick={() => {}}
+                        >
+                          {time}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="text-[14px] text-[#2F2C45] mb-2">오후</div>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        '12:00',
+                        '12:30',
+                        '1:00',
+                        '1:30',
+                        '2:00',
+                        '2:30',
+                        '3:00',
+                        '3:30',
+                        '4:00',
+                        '4:30',
+                        '5:00',
+                        '5:30',
+                      ].map((time) => (
+                        <button
+                          key={time}
+                          className={`px-6 py-4 border rounded-lg text-[16px] ${
+                            time === '1:00'
+                              ? 'bg-[#FF3A4E] text-white border-[#FF3A4E]'
+                              : 'border-[#EEEEEF] hover:border-[#FF3A4E]'
+                          }`}
+                          onClick={() => {}}
+                        >
+                          {time}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+          </AccordionContent>
+        </AccordionItem>
 
-      {/* Options */}
-      <div className="px-4 space-y-4">
-        {/* Cake Size */}
-        <div className="border-b border-[#EEEEEF] pb-4">
-          <div className="flex items-center justify-between mb-4">
+        {/* 케이크사이즈 섹션 */}
+        <AccordionItem value="cake-size" className="border-b border-[#EEEEEF]">
+          <AccordionTrigger className="px-4 py-4 hover:no-underline">
             <div className="text-[18px] font-bold text-[#2D2A32]">
               케이크사이즈
             </div>
             <div className="bg-[#E2F4FE] text-[#2474B7] px-2 py-1 rounded text-[12px]">
               필수
             </div>
-          </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="px-4 pb-4">
+              <div className="space-y-2">
+                {[
+                  { value: '0호 10cm', price: '+0원' },
+                  { value: '1호 15cm', price: '(+27,000원)' },
+                  { value: '2호 18cm', price: '(+40,000원)' },
+                ].map((option) => (
+                  <label
+                    key={option.value}
+                    className="flex items-center gap-3 py-3 cursor-pointer"
+                  >
+                    <input
+                      type="radio"
+                      name="size"
+                      value={option.value}
+                      checked={selectedSize === option.value}
+                      onChange={(e) => setSelectedSize(e.target.value)}
+                      className="w-5 h-5"
+                    />
+                    <span className="text-[15px] text-[#2D2A32]">
+                      {option.value}
+                    </span>
+                    <span className="text-[12px] text-[#AEA9B1]">
+                      {option.price}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
 
-          <div className="space-y-2">
-            {[
-              { value: '0호 10cm', price: '+0원' },
-              { value: '1호 15cm', price: '(+27,000원)' },
-              { value: '2호 18cm', price: '(+40,000원)' },
-            ].map((option) => (
-              <label
-                key={option.value}
-                className="flex items-center gap-3 py-3 cursor-pointer"
-              >
-                <input
-                  type="radio"
-                  name="size"
-                  value={option.value}
-                  checked={selectedSize === option.value}
-                  onChange={(e) => setSelectedSize(e.target.value)}
-                  className="w-5 h-5"
-                />
-                <span className="text-[15px] text-[#2D2A32]">
-                  {option.value}
-                </span>
-                <span className="text-[12px] text-[#AEA9B1]">
-                  {option.price}
-                </span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* Cake Flavor - Sheet */}
-        <div className="border-b border-[#EEEEEF] pb-4">
-          <div className="flex items-center justify-between mb-4">
+        {/* 케이크 맛 섹션 */}
+        <AccordionItem
+          value="cake-flavor"
+          className="border-b border-[#EEEEEF]"
+        >
+          <AccordionTrigger className="px-4 py-4 hover:no-underline">
             <div className="text-[18px] font-bold text-[#2D2A32]">
               케이크 맛
             </div>
             <div className="bg-[#E2F4FE] text-[#2474B7] px-2 py-1 rounded text-[12px]">
               필수
             </div>
-          </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="px-4 pb-4">
+              <div className="bg-[rgba(174,169,177,0.1)] px-3 py-2 rounded mb-3">
+                <div className="text-[15px] text-[#48464C]">시트</div>
+              </div>
 
-          <div className="bg-[rgba(174,169,177,0.1)] px-3 py-2 rounded mb-3">
-            <div className="text-[15px] text-[#48464C]">시트</div>
-          </div>
-
-          <div className="space-y-2">
-            {[
-              { value: '바닐라', price: '(+0원)' },
-              { value: '초코', price: '(+27,000원)' },
-              { value: '레드벨벳', price: '(+40,000원)' },
-            ].map((option) => (
-              <label
-                key={option.value}
-                className="flex items-center gap-3 py-3 cursor-pointer"
-              >
-                <input
-                  type="radio"
-                  name="sheet"
-                  value={option.value}
-                  checked={selectedSheet === option.value}
-                  onChange={(e) => setSelectedSheet(e.target.value)}
-                  className="w-5 h-5"
-                />
-                <span className="text-[15px] text-[#2D2A32]">
-                  {option.value}
-                </span>
-                <span className="text-[12px] text-[#AEA9B1]">
-                  {option.price}
-                </span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* Cake Flavor - Filling */}
-        <div className="border-b border-[#EEEEEF] pb-4">
-          <div className="bg-[rgba(174,169,177,0.1)] px-3 py-2 rounded mb-3">
-            <div className="text-[15px] text-[#48464C]">필링</div>
-          </div>
-
-          <div className="space-y-2">
-            {[
-              { value: '딸기잼', price: '(+0원)' },
-              { value: '오레오', price: '(+2,000원)' },
-              { value: '초코 가나슈', price: '(+2,000원)' },
-            ].map((option) => (
-              <label
-                key={option.value}
-                className="flex items-center gap-3 py-3 cursor-pointer"
-              >
-                <input
-                  type="radio"
-                  name="filling"
-                  value={option.value}
-                  checked={selectedFilling === option.value}
-                  onChange={(e) => setSelectedFilling(e.target.value)}
-                  className="w-5 h-5"
-                />
-                <span className="text-[15px] text-[#2D2A32]">
-                  {option.value}
-                </span>
-                <span className="text-[12px] text-[#AEA9B1]">
-                  {option.price}
-                </span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* Design */}
-        <div className="border-b border-[#EEEEEF] pb-4">
-          <div className="flex items-center justify-between mb-2">
-            <div className="text-[18px] font-bold text-[#2D2A32]">
-              디자인 초
+              <div className="space-y-2">
+                {[
+                  { value: '바닐라', price: '(+0원)' },
+                  { value: '초코', price: '(+27,000원)' },
+                  { value: '레드벨벳', price: '(+40,000원)' },
+                ].map((option) => (
+                  <label
+                    key={option.value}
+                    className="flex items-center gap-3 py-3 cursor-pointer"
+                  >
+                    <input
+                      type="radio"
+                      name="sheet"
+                      value={option.value}
+                      checked={selectedSheet === option.value}
+                      onChange={(e) => setSelectedSheet(e.target.value)}
+                      className="w-5 h-5"
+                    />
+                    <span className="text-[15px] text-[#2D2A32]">
+                      {option.value}
+                    </span>
+                    <span className="text-[12px] text-[#AEA9B1]">
+                      {option.price}
+                    </span>
+                  </label>
+                ))}
+              </div>
             </div>
-            <div className="text-[14px] text-[#AEA9B1]">중복 선택 가능</div>
-          </div>
-          <div className="bg-[#E2F4FE] text-[#2474B7] px-2 py-1 rounded text-[12px] inline-block mb-4">
-            필수
-          </div>
 
-          <div className="space-y-2">
-            {[
-              { value: '기본', price: '(+0원)' },
-              { value: '하트(레드)', price: '(+27,000원)' },
-              { value: '하트(핑크)', price: '(+40,000원)' },
-              { value: '곰돌이(화이트)', price: '(+2,000원)' },
-              { value: '곰돌이(브라운)', price: '(+2,000원)' },
-            ].map((option) => (
-              <label
-                key={option.value}
-                className="flex items-center gap-3 py-3 cursor-pointer"
-              >
-                <input
-                  type="checkbox"
-                  checked={selectedDesigns.includes(option.value)}
-                  onChange={() => handleDesignToggle(option.value)}
-                  className="w-5 h-5 rounded"
-                />
-                <span className="text-[15px] text-[#2D2A32]">
-                  {option.value}
-                </span>
-                <span className="text-[12px] text-[#A5A3B3]">
-                  {option.price}
-                </span>
-              </label>
-            ))}
-          </div>
-        </div>
+            {/* Cake Flavor - Filling */}
+            <div className="border-b border-[#EEEEEF] pb-4">
+              <div className="bg-[rgba(174,169,177,0.1)] px-3 py-2 rounded mb-3">
+                <div className="text-[15px] text-[#48464C]">필링</div>
+              </div>
 
-        {/* Packaging */}
-        <div className="border-b border-[#EEEEEF] pb-4">
-          <div className="flex items-center justify-between mb-4">
+              <div className="space-y-2">
+                {[
+                  { value: '딸기잼', price: '(+0원)' },
+                  { value: '오레오', price: '(+2,000원)' },
+                  { value: '초코 가나슈', price: '(+2,000원)' },
+                ].map((option) => (
+                  <label
+                    key={option.value}
+                    className="flex items-center gap-3 py-3 cursor-pointer"
+                  >
+                    <input
+                      type="radio"
+                      name="filling"
+                      value={option.value}
+                      checked={selectedFilling === option.value}
+                      onChange={(e) => setSelectedFilling(e.target.value)}
+                      className="w-5 h-5"
+                    />
+                    <span className="text-[15px] text-[#2D2A32]">
+                      {option.value}
+                    </span>
+                    <span className="text-[12px] text-[#AEA9B1]">
+                      {option.price}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+
+        {/* 디자인 초 섹션 */}
+        <AccordionItem value="design" className="border-b border-[#EEEEEF]">
+          <AccordionTrigger className="px-4 py-4 hover:no-underline">
+            <div className="flex items-center gap-2">
+              <div className="text-[18px] font-bold text-[#2D2A32]">
+                디자인 초
+              </div>
+              <div className="text-[14px] text-[#AEA9B1]">중복 선택 가능</div>
+            </div>
+            <div className="bg-[#E2F4FE] text-[#2474B7] px-2 py-1 rounded text-[12px]">
+              필수
+            </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="px-4 pb-4">
+              <div className="space-y-2">
+                {[
+                  { value: '기본', price: '(+0원)' },
+                  { value: '하트(레드)', price: '(+27,000원)' },
+                  { value: '하트(핑크)', price: '(+40,000원)' },
+                  { value: '곰돌이(화이트)', price: '(+2,000원)' },
+                  { value: '곰돌이(브라운)', price: '(+2,000원)' },
+                ].map((option) => (
+                  <label
+                    key={option.value}
+                    className="flex items-center gap-3 py-3 cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedDesigns.includes(option.value)}
+                      onChange={() => handleDesignToggle(option.value)}
+                      className="w-5 h-5 rounded"
+                    />
+                    <span className="text-[15px] text-[#2D2A32]">
+                      {option.value}
+                    </span>
+                    <span className="text-[12px] text-[#A5A3B3]">
+                      {option.price}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+
+        {/* 포장 섹션 */}
+        <AccordionItem value="packaging" className="border-b border-[#EEEEEF]">
+          <AccordionTrigger className="px-4 py-4 hover:no-underline">
             <div className="text-[18px] font-bold text-[#2D2A32]">포장</div>
             <div className="bg-[#E2F4FE] text-[#2474B7] px-2 py-1 rounded text-[12px]">
               필수
             </div>
-          </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="px-4 pb-4">
+              <div className="space-y-2">
+                {[
+                  { value: '기본 (펄프용기)', price: '(+0원)' },
+                  { value: '기본 (펄프용기) + 비닐백', price: '(+27,000원)' },
+                  { value: '케이크 상자', price: '(+40,000원)' },
+                ].map((option) => (
+                  <label
+                    key={option.value}
+                    className="flex items-center gap-3 py-3 cursor-pointer"
+                  >
+                    <input
+                      type="radio"
+                      name="packaging"
+                      value={option.value}
+                      checked={selectedPackaging === option.value}
+                      onChange={(e) => setSelectedPackaging(e.target.value)}
+                      className="w-5 h-5"
+                    />
+                    <span className="text-[15px] text-[#2D2A32]">
+                      {option.value}
+                    </span>
+                    <span className="text-[12px] text-[#AEA9B1]">
+                      {option.price}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
 
-          <div className="space-y-2">
-            {[
-              { value: '기본 (펄프용기)', price: '(+0원)' },
-              { value: '기본 (펄프용기) + 비닐백', price: '(+27,000원)' },
-              { value: '케이크 상자', price: '(+40,000원)' },
-            ].map((option) => (
-              <label
-                key={option.value}
-                className="flex items-center gap-3 py-3 cursor-pointer"
-              >
-                <input
-                  type="radio"
-                  name="packaging"
-                  value={option.value}
-                  checked={selectedPackaging === option.value}
-                  onChange={(e) => setSelectedPackaging(e.target.value)}
-                  className="w-5 h-5"
-                />
-                <span className="text-[15px] text-[#2D2A32]">
-                  {option.value}
-                </span>
-                <span className="text-[12px] text-[#AEA9B1]">
-                  {option.price}
-                </span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* Ice Pack */}
-        <div className="border-b border-[#EEEEEF] pb-4">
-          <div className="flex items-center justify-between mb-4">
+        {/* 아이스팩 추가 섹션 */}
+        <AccordionItem value="ice-pack" className="border-b border-[#EEEEEF]">
+          <AccordionTrigger className="px-4 py-4 hover:no-underline">
             <div className="text-[18px] font-bold text-[#2D2A32]">
               아이스팩 추가
             </div>
             <div className="bg-[#E2F4FE] text-[#2474B7] px-2 py-1 rounded text-[12px]">
               필수
             </div>
-          </div>
-
-          <div className="space-y-2">
-            {[
-              { value: '추가 X', price: '(+0원)' },
-              {
-                value: '아이스팩 1개 추가 (여름철 필수)',
-                price: '(+27,000원)',
-              },
-            ].map((option) => (
-              <label
-                key={option.value}
-                className="flex items-center gap-3 py-3 cursor-pointer"
-              >
-                <input
-                  type="radio"
-                  name="icepack"
-                  value={option.value}
-                  checked={selectedIcePack === option.value}
-                  onChange={(e) => setSelectedIcePack(e.target.value)}
-                  className="w-5 h-5"
-                />
-                <span className="text-[15px] text-[#2D2A32]">
-                  {option.value}
-                </span>
-                <span className="text-[12px] text-[#AEA9B1]">
-                  {option.price}
-                </span>
-              </label>
-            ))}
-          </div>
-        </div>
-      </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="px-4 pb-4">
+              <div className="space-y-2">
+                {[
+                  { value: '추가 X', price: '(+0원)' },
+                  {
+                    value: '아이스팩 1개 추가 (여름철 필수)',
+                    price: '(+27,000원)',
+                  },
+                ].map((option) => (
+                  <label
+                    key={option.value}
+                    className="flex items-center gap-3 py-3 cursor-pointer"
+                  >
+                    <input
+                      type="radio"
+                      name="icepack"
+                      value={option.value}
+                      checked={selectedIcePack === option.value}
+                      onChange={(e) => setSelectedIcePack(e.target.value)}
+                      className="w-5 h-5"
+                    />
+                    <span className="text-[15px] text-[#2D2A32]">
+                      {option.value}
+                    </span>
+                    <span className="text-[12px] text-[#AEA9B1]">
+                      {option.price}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
 
       {/* Order Summary */}
       <div className="px-4 py-4 bg-[rgba(174,169,177,0.1)] rounded-lg mx-4 mb-4">
