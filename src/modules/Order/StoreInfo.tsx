@@ -1,3 +1,5 @@
+import KakaoMap from './KakaoMap';
+
 const StoreInfo = () => {
   const handleCopyAddress = () => {
     navigator.clipboard.writeText('서울 강남구 도산대로62길 26 1층');
@@ -25,7 +27,7 @@ const StoreInfo = () => {
         </span>
         <button
           onClick={handleCopyAddress}
-          className="text-[14px] leading-[20px] text-[#2885CB] font-normal ml-auto"
+          className="text-[14px] leading-[20px] text-[#2885CB] font-normal ml-auto cursor-pointer"
         >
           복사
         </button>
@@ -39,7 +41,7 @@ const StoreInfo = () => {
             매일 09:00 ~ 18:00
           </span>
         </div>
-        <div className="flex justify-center items-center pl-6">
+        <div className="flex  pl-6">
           <span className="text-[15px] leading-[22px] text-[#2D2A32] font-normal">
             화요일 정기 휴무
           </span>
@@ -54,7 +56,7 @@ const StoreInfo = () => {
         </span>
         <button
           onClick={handleCopyPhone}
-          className="text-[14px] leading-[20px] text-[#2885CB] font-normal ml-auto"
+          className="text-[14px] leading-[20px] text-[#2885CB] font-normal ml-auto cursor-pointer"
         >
           복사
         </button>
@@ -66,6 +68,15 @@ const StoreInfo = () => {
         <span className="text-[15px] leading-[22px] text-[#2D2A32] font-normal">
           https://suede.co.kr
         </span>
+      </div>
+
+      {/* 지도 */}
+      <div className="mt-2">
+        <KakaoMap
+          address="서울 강남구 도산대로62길 26 1층"
+          markerTitle="스웨이드 베이커리 청담"
+          className="w-full"
+        />
       </div>
     </div>
   );
