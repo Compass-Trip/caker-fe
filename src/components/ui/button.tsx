@@ -11,6 +11,7 @@ const buttonVariants = cva(
       variant: {
         default:
           "bg-primary-500 text-white shadow-xs hover:bg-primary-600 focus:bg-primary-700 active:bg-primary-800",
+        outline: "bg-white border-1 border-[#eeeeef] text-gray-700 shadow-xs",
       },
       size: {
         default: "h-12 px-3 py-4 min-w-[120px] has-[>svg]:px-3",

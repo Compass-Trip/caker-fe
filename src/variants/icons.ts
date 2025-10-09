@@ -1,21 +1,24 @@
 export const categoryIcons = {
-  baby: "icons/category/baby.svg",
   birth: "icons/category/birth.svg",
-  character: "icons/category/character.svg",
-  company: "icons/category/company.svg",
-  cute: "icons/category/cute.svg",
-  event: "icons/category/event.svg",
-  flower: "icons/category/flower.svg",
-  fruit: "icons/category/fruit.svg",
-  gift: "icons/category/gift.svg",
-  graduation: "icons/category/graduation.svg",
-  lunchbox: "icons/category/lunchbox.svg",
-  minimal: "icons/category/minimal.svg",
-  photo: "icons/category/photo.svg",
-  premium: "icons/category/premium.svg",
-  season: "icons/category/season.svg",
-  smallCake: "icons/category/smallcake.svg",
   wedding: "icons/category/wedding.svg",
+  baby: "icons/category/baby.svg",
+  event: "icons/category/event.svg",
+  graduation: "icons/category/graduation.svg",
+  company: "icons/category/company.svg",
+  season: "icons/category/season.svg",
+  character: "icons/category/character.svg",
+  fruit: "icons/category/fruit.svg",
+  flower: "icons/category/flower.svg",
+  smallCake: "icons/category/smallcake.svg",
+  lunchbox: "icons/category/lunchbox.svg",
+  photo: "icons/category/photo.svg",
+};
+
+export const filterIcons = {
+  cute: "icons/category/cute.svg",
+  minimal: "icons/category/minimal.svg",
+  premium: "icons/category/premium.svg",
+  gift: "icons/category/gift.svg",
 };
 
 export const pageIcons = {
@@ -33,4 +36,14 @@ export const basicIcons = {
   kakao: "/icons/kakao.svg",
   btnLike: "/icons/card/buttonLike.svg",
   btnUnlike: "icons/card/buttonUnlike.svg",
+};
+
+export type IconKey = "call" | "clock" | "location" | "map" | "site";
+
+export const myPageIcons: Record<IconKey, string> = {
+  call: "/icons/myPage/call.svg",
+  clock: "/icons/myPage/clock.svg",
+  location: "/icons/myPage/location.svg",
+  map: "/icons/myPage/map.svg",
+  site: "/icons/myPage/site.svg",
 };
