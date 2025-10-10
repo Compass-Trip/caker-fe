@@ -29,7 +29,7 @@ const Order = () => {
             <HeaderCart />
           </div>
         }
-        className="mb-2"
+        className="z-10 mx-[-14px]"
       />
 
       <section>
@@ -86,37 +86,38 @@ const Order = () => {
         <OrderOptionsSection />
       ) : (
         <div>
-          <IndicatorTabs
-            tabsItems={[
-              {
-                label: '상품정보',
-                value: 'product info',
-                content: <ProductInfo />,
-              },
-              {
-                label: '리뷰(22)',
-                value: 'reviews',
-                content: (
-                  <div className="py-6 text-[#79767D]">
-                    리뷰는 준비 중입니다.
-                  </div>
-                ),
-              },
-              {
-                label: '매장정보',
-                value: 'store info',
-                content: <StoreInfo />,
-              },
-            ]}
-            classNames={{
-              tabs: 'w-full',
-              list: 'w-full',
-              trigger:
-                'flex-1 justify-center h-9 text-[16px] border-b-2 data-[state=active]:border-[#FF3A4E] data-[state=active]:text-[#D80023]',
-              content: 'mt-0',
-            }}
-          />
-
+          <div className="relative">
+            <IndicatorTabs
+              tabsItems={[
+                {
+                  label: '상품정보',
+                  value: 'product info',
+                  content: <ProductInfo />,
+                },
+                {
+                  label: '리뷰(22)',
+                  value: 'reviews',
+                  content: (
+                    <div className="py-6 text-[#79767D]">
+                      리뷰는 준비 중입니다.
+                    </div>
+                  ),
+                },
+                {
+                  label: '매장정보',
+                  value: 'store info',
+                  content: <StoreInfo />,
+                },
+              ]}
+              classNames={{
+                tabs: 'w-full sticky top-0',
+                list: 'w-full',
+                trigger:
+                  'flex-1 justify-center h-9 text-[16px] border-b-2 data-[state=active]:border-[#FF3A4E] data-[state=active]:text-[#D80023]',
+                content: 'mt-0',
+              }}
+            />
+          </div>
           <div className="w-full flex items-center gap-2 py-2 px-4">
             <button
               className="w-12 h-12  border-none flex items-center justify-center"
