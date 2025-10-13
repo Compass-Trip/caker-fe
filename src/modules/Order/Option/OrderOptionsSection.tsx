@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useReducer } from 'react';
+import { useReducer, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Accordion,
@@ -47,7 +47,7 @@ function reducer(state: typeof initialState, action: any) {
 
 const OrderOptionsSection = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  const [date, setDate] = useState<Date | undefined>(new Date());
   const calculateTotalPrice = () => {
     let total = 33000; // 기본 가격
 
@@ -115,7 +115,9 @@ const OrderOptionsSection = () => {
           <AccordionContent>
             <div className="px-4 pb-4">
               {/* Calendar */}
-              <Calendar />
+
+              <Calendar mode="single" selected={date} onSelect={setDate} />
+
               <div className="bg-white border border-[#EEEEEF] rounded-lg p-4">
                 {/* Time Slots */}
                 <div className="space-y-4">

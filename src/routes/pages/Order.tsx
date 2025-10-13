@@ -94,15 +94,11 @@ const Order = () => {
                   value: 'product info',
                   content: <ProductInfo />,
                 },
-                {
-                  label: '리뷰(22)',
-                  value: 'reviews',
-                  content: (
-                    <div className="py-6 text-[#79767D]">
-                      리뷰는 준비 중입니다.
-                    </div>
-                  ),
-                },
+                // {
+                //   label: '리뷰(22)',
+                //   value: 'reviews',
+                //   content: <Review />,
+                // },
                 {
                   label: '매장정보',
                   value: 'store info',
