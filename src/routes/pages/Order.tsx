@@ -29,7 +29,7 @@ const Order = () => {
             <HeaderCart />
           </div>
         }
-        className="z-10 mx-[-14px]"
+        className="mb-2"
       />
 
       <section>
