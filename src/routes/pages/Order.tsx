@@ -36,8 +36,8 @@ const Order = () => {
         <CakeCarousel />
       </section>
 
-      <section>
-        <div className="flex flex-col gap-2 border-b border-[#EEEEEF] py-[20px] px-[14px]">
+      <section className=" border-3 rounded-t-[24px] border-[#EEEEEF]">
+        <div className="flex flex-col gap-2 py-[20px] px-[14px]">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-full bg-[#EEEEEF]" />
             <div className="flex flex-col">

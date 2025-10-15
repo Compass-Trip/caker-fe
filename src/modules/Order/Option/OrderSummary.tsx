@@ -5,9 +5,7 @@ const OrderSummary = ({ state }: { state: any }) => {
       <div className="space-y-2">
         <div className="flex justify-between">
           <span className="text-[12px] text-[#2D2A32]">픽업:</span>
-          <span className="text-[12px] text-[#79767D]">
-            {state.selectedDate}
-          </span>
+          <span className="text-[12px] text-[#79767D]">{`${state.date.toLocaleDateString('ko-KR')} ${state.selectedTime}` }</span>
         </div>
         <div className="flex justify-between">
           <span className="text-[12px] text-[#2D2A32]">사이즈:</span>

@@ -169,7 +169,7 @@ function CalendarDayButton({
       data-range-end={modifiers.range_end}
       data-range-middle={modifiers.range_middle}
       className={cn(
-        'flex size-auto w-9 h-[42px] flex-col items-center justify-center gap-0 leading-none font-normal rounded-full',
+        'flex size-auto w-full h-[42px] flex-col items-center justify-center gap-0 leading-none font-normal rounded-full',
 
         'data-[selected-single=true]:bg-[#FF3A4E] data-[selected-single=true]:text-white',
 

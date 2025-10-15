@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { useReducer, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Accordion,
@@ -9,77 +7,40 @@ import {
 } from '@/components/ui/accordion';
 import OrderSummary from './OrderSummary';
 import { Calendar } from '@/components/ui/calendar';
-
-// 초기 상태
-const initialState = {
-  selectedSize: '0호 10cm',
-  selectedSheet: '바닐라',
-  selectedFilling: '딸기잼',
-  selectedDesigns: ['기본'] as string[],
-  selectedPackaging: '기본 (펄프용기)',
-  selectedIcePack: '추가 X',
-};
-
-// reducer 함수
-function reducer(state: typeof initialState, action: any) {
-  switch (action.type) {
-    case 'SET_SIZE':
-      return { ...state, selectedSize: action.payload };
-    case 'SET_SHEET':
-      return { ...state, selectedSheet: action.payload };
-    case 'SET_FILLING':
-      return { ...state, selectedFilling: action.payload };
-    case 'SET_DESIGN_CANDLE':
-      return {
-        ...state,
-        selectedDesigns: state.selectedDesigns.includes(action.payload)
-          ? state.selectedDesigns.filter((d) => d !== action.payload)
-          : [...state.selectedDesigns, action.payload],
-      };
-    case 'SET_PACKAGING':
-      return { ...state, selectedPackaging: action.payload };
-    case 'SET_ICE_PACK':
-      return { ...state, selectedIcePack: action.payload };
-    default:
-      return state;
-  }
-}
+import { useOrderStore } from '@/store';
 
 const OrderOptionsSection = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const [date, setDate] = useState<Date | undefined>(new Date());
-  const calculateTotalPrice = () => {
-    let total = 33000; // 기본 가격
+  // Zustand store 사용
+  const {
+    date,
+    selectedTime,
+    selectedSize,
+    selectedSheet,
+    selectedFilling,
+    selectedDesigns,
+    selectedPackaging,
+    selectedIcePack,
+    setCalendarDate,
+    setPickupTime,
+    setSize,
+    setSheet,
+    setFilling,
+    toggleDesignCandle,
+    setPackaging,
+    setIcePack,
+    calculateTotalPrice,
+  } = useOrderStore();
 
-    // 사이즈 추가 금액
-    if (state.selectedSize === '1호 15cm') {
-      total += 27000;
-    }
-    if (state.selectedSize === '2호 18cm') total += 40000;
-
-    // 시트 추가 금액
-    if (state.selectedSheet === '초코') total += 27000;
-    if (state.selectedSheet === '레드벨벳') total += 40000;
-
-    // 필링 추가 금액
-    if (state.selectedFilling === '오레오') total += 2000;
-    if (state.selectedFilling === '초코 가나슈') total += 2000;
-
-    // 디자인 추가 금액
-    if (state.selectedDesigns.includes('하트(레드)')) total += 27000;
-    if (state.selectedDesigns.includes('하트(핑크)')) total += 40000;
-    if (state.selectedDesigns.includes('곰돌이(화이트)')) total += 2000;
-    if (state.selectedDesigns.includes('곰돌이(브라운)')) total += 2000;
-
-    // 포장 추가 금액
-    if (state.selectedPackaging === '기본 (펄프용기) + 비닐백') total += 27000;
-    if (state.selectedPackaging === '케이크 상자') total += 40000;
-
-    // 아이스팩 추가 금액
-    if (state.selectedIcePack === '아이스팩 1개 추가 (여름철 필수)')
-      total += 27000;
-
-    return total;
+  // 상태를 객체로 묶어서 OrderSummary에 전달
+  const state = {
+    date,
+    selectedTime,
+    selectedSize,
+    selectedSheet,
+    selectedFilling,
+    selectedDesigns,
+    selectedPackaging,
+    selectedIcePack,
   };
 
   return (
@@ -115,9 +76,11 @@ const OrderOptionsSection = () => {
           <AccordionContent>
             <div className="px-4 pb-4">
               {/* Calendar */}
-
-              <Calendar mode="single" selected={date} onSelect={setDate} />
-
+              <Calendar
+                mode="single"
+                selected={date}
+                onSelect={setCalendarDate}
+              />
               <div className="bg-white border border-[#EEEEEF] rounded-lg p-4">
                 {/* Time Slots */}
                 <div className="space-y-4">
@@ -127,8 +90,13 @@ const OrderOptionsSection = () => {
                       {['10:00', '10:30', '11:00', '11:30'].map((time) => (
                         <button
                           key={time}
-                          className="flex-1 px-4 py-4 border border-[#EEEEEF] rounded-lg text-[16px] hover:border-[#FF3A4E]"
-                          onClick={() => {}}
+                          value={time}
+                          className={`flex-1 px-4 py-4 border rounded-lg text-[16px] ${
+                            time === selectedTime
+                              ? 'bg-[#FF3A4E] text-white border-[#FF3A4E]'
+                              : 'border-[#EEEEEF] hover:border-[#FF3A4E]'
+                          }`}
+                          onClick={(e) => setPickupTime(e.currentTarget.value)}
                         >
                           {time}
                         </button>
@@ -155,12 +123,13 @@ const OrderOptionsSection = () => {
                       ].map((time) => (
                         <button
                           key={time}
+                          value={time}
                           className={`flex-1 px-4 py-4 border rounded-lg text-[16px] ${
-                            time === '1:00'
+                            time === selectedTime
                               ? 'bg-[#FF3A4E] text-white border-[#FF3A4E]'
                               : 'border-[#EEEEEF] hover:border-[#FF3A4E]'
                           }`}
-                          onClick={() => {}}
+                          onClick={(e) => setPickupTime(e.currentTarget.value)}
                         >
                           {time}
                         </button>
@@ -201,10 +170,8 @@ const OrderOptionsSection = () => {
                     type="radio"
                     name="size"
                     value={option.value}
-                    checked={state.selectedSize === option.value}
-                    onChange={(e) =>
-                      dispatch({ type: 'SET_SIZE', payload: e.target.value })
-                    }
+                    checked={selectedSize === option.value}
+                    onChange={(e) => setSize(e.target.value)}
                     className="w-5 h-5"
                   />
                   <span className="text-[15px] text-[#2D2A32]">
@@ -249,10 +216,8 @@ const OrderOptionsSection = () => {
                     type="radio"
                     name="sheet"
                     value={option.value}
-                    checked={state.selectedSheet === option.value}
-                    onChange={(e) =>
-                      dispatch({ type: 'SET_SHEET', payload: e.target.value })
-                    }
+                    checked={selectedSheet === option.value}
+                    onChange={(e) => setSheet(e.target.value)}
                     className="w-5 h-5"
                   />
                   <span className="text-[15px] text-[#2D2A32]">
@@ -266,7 +231,7 @@ const OrderOptionsSection = () => {
             </div>
 
             {/* 필링 */}
-            <div className="border-t border-[#EEEEEF] pt-4 space-y-2">
+            <div className="border-t border-[#EEEEEF] px-4 pt-4 space-y-2">
               {[
                 { value: '딸기잼', price: '(+0원)' },
                 { value: '오레오', price: '(+2,000원)' },
@@ -280,10 +245,8 @@ const OrderOptionsSection = () => {
                     type="radio"
                     name="filling"
                     value={option.value}
-                    checked={state.selectedFilling === option.value}
-                    onChange={(e) =>
-                      dispatch({ type: 'SET_FILLING', payload: e.target.value })
-                    }
+                    checked={selectedFilling === option.value}
+                    onChange={(e) => setFilling(e.target.value)}
                     className="w-5 h-5"
                   />
                   <span className="text-[15px] text-[#2D2A32]">
@@ -326,13 +289,8 @@ const OrderOptionsSection = () => {
                 >
                   <input
                     type="checkbox"
-                    checked={state.selectedDesigns.includes(option.value)}
-                    onChange={() =>
-                      dispatch({
-                        type: 'SET_DESIGN_CANDLE',
-                        payload: option.value,
-                      })
-                    }
+                    checked={selectedDesigns.includes(option.value)}
+                    onChange={() => toggleDesignCandle(option.value)}
                     className="w-5 h-5"
                   />
                   <span className="text-[15px] text-[#2D2A32]">
@@ -372,13 +330,8 @@ const OrderOptionsSection = () => {
                     type="radio"
                     name="packaging"
                     value={option.value}
-                    checked={state.selectedPackaging === option.value}
-                    onChange={(e) =>
-                      dispatch({
-                        type: 'SET_PACKAGING',
-                        payload: e.target.value,
-                      })
-                    }
+                    checked={selectedPackaging === option.value}
+                    onChange={(e) => setPackaging(e.target.value)}
                     className="w-5 h-5"
                   />
                   <span className="text-[15px] text-[#2D2A32]">
@@ -422,13 +375,8 @@ const OrderOptionsSection = () => {
                     type="radio"
                     name="icepack"
                     value={option.value}
-                    checked={state.selectedIcePack === option.value}
-                    onChange={(e) =>
-                      dispatch({
-                        type: 'SET_ICE_PACK',
-                        payload: e.target.value,
-                      })
-                    }
+                    checked={selectedIcePack === option.value}
+                    onChange={(e) => setIcePack(e.target.value)}
                     className="w-5 h-5"
                   />
                   <span className="text-[15px] text-[#2D2A32]">
