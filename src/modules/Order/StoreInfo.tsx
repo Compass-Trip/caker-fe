@@ -14,7 +14,7 @@ const StoreInfo = () => {
       {/* 매장명 */}
       <div className="flex items-center gap-2">
         <img src="/icons/store/house.svg" alt="매장" className="w-4 h-4" />
-        <span className="text-[15px] leading-[22px] text-[#2D2A32] font-normal">
+        <span className="text-[15px] leading-[22px] text-gray-900 font-normal">
           스웨이드 베이커리 청담
         </span>
       </div>
@@ -22,12 +22,12 @@ const StoreInfo = () => {
       {/* 주소 */}
       <div className="flex items-center gap-2">
         <img src="/icons/store/map.svg" alt="위치" className="w-4 h-4" />
-        <span className="text-[15px] leading-[22px] text-[#2D2A32] font-normal">
+        <span className="text-[15px] leading-[22px] text-gray-900 font-normal">
           서울 강남구 도산대로62길 26 1층
         </span>
         <button
           onClick={handleCopyAddress}
-          className="text-[14px] leading-[20px] text-[#2885CB] font-normal ml-auto cursor-pointer"
+          className="text-[14px] leading-[20px] text-point-blue-500 font-normal ml-auto cursor-pointer"
         >
           복사
         </button>
@@ -37,12 +37,12 @@ const StoreInfo = () => {
       <div className="flex flex-col gap-1">
         <div className="flex items-center gap-2">
           <img src="/icons/store/clock.svg" alt="시간" className="w-4 h-4" />
-          <span className="text-[15px] leading-[22px] text-[#2D2A32] font-normal">
+          <span className="text-[15px] leading-[22px] text-gray-900 font-normal">
             매일 09:00 ~ 18:00
           </span>
         </div>
         <div className="flex  pl-6">
-          <span className="text-[15px] leading-[22px] text-[#2D2A32] font-normal">
+          <span className="text-[15px] leading-[22px] text-gray-900 font-normal">
             화요일 정기 휴무
           </span>
         </div>
@@ -51,12 +51,12 @@ const StoreInfo = () => {
       {/* 전화번호 */}
       <div className="flex items-center gap-2">
         <img src="/icons/store/phone.svg" alt="전화" className="w-4 h-4" />
-        <span className="text-[15px] leading-[22px] text-[#2D2A32] font-normal">
+        <span className="text-[15px] leading-[22px] text-gray-900 font-normal">
           0507-1449-4422
         </span>
         <button
           onClick={handleCopyPhone}
-          className="text-[14px] leading-[20px] text-[#2885CB] font-normal ml-auto cursor-pointer"
+          className="text-[14px] leading-[20px] text-point-blue-500 font-normal ml-auto cursor-pointer"
         >
           복사
         </button>
@@ -65,7 +65,7 @@ const StoreInfo = () => {
       {/* 웹사이트 */}
       <div className="flex items-center gap-2">
         <img src="/icons/store/window.svg" alt="웹사이트" className="w-4 h-4" />
-        <span className="text-[15px] leading-[22px] text-[#2D2A32] font-normal">
+        <span className="text-[15px] leading-[22px] text-gray-900 font-normal">
           https://suede.co.kr
         </span>
       </div>

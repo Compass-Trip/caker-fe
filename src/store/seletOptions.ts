@@ -6,7 +6,7 @@ interface OrderState {
   selectedSize: string;
   selectedSheet: string;
   selectedFilling: string;
-  selectedDesigns: string[];
+  selectedDesignCandle: string[];
   selectedPackaging: string;
   selectedIcePack: string;
 }
@@ -32,7 +32,7 @@ export const useOrderStore = create<OrderStore>((set, get) => ({
   selectedSize: '0호 10cm',
   selectedSheet: '바닐라',
   selectedFilling: '딸기잼',
-  selectedDesigns: ['기본'],
+  selectedDesignCandle: ['기본'],
   selectedPackaging: '기본 (펄프용기)',
   selectedIcePack: '추가 X',
 
@@ -53,9 +53,9 @@ export const useOrderStore = create<OrderStore>((set, get) => ({
 
   toggleDesignCandle: (design) =>
     set((state) => ({
-      selectedDesigns: state.selectedDesigns.includes(design)
-        ? state.selectedDesigns.filter((d) => d !== design)
-        : [...state.selectedDesigns, design],
+      selectedDesignCandle: state.selectedDesignCandle.includes(design)
+        ? state.selectedDesignCandle.filter((d) => d !== design)
+        : [...state.selectedDesignCandle, design],
     })),
 
   setPackaging: (packaging) => set({ selectedPackaging: packaging }),
@@ -81,10 +81,10 @@ export const useOrderStore = create<OrderStore>((set, get) => ({
     if (state.selectedFilling === '초코 가나슈') total += 2000;
 
     // 디자인 추가 금액
-    if (state.selectedDesigns.includes('하트(레드)')) total += 27000;
-    if (state.selectedDesigns.includes('하트(핑크)')) total += 40000;
-    if (state.selectedDesigns.includes('곰돌이(화이트)')) total += 2000;
-    if (state.selectedDesigns.includes('곰돌이(브라운)')) total += 2000;
+    if (state.selectedDesignCandle.includes('하트(레드)')) total += 27000;
+    if (state.selectedDesignCandle.includes('하트(핑크)')) total += 40000;
+    if (state.selectedDesignCandle.includes('곰돌이(화이트)')) total += 2000;
+    if (state.selectedDesignCandle.includes('곰돌이(브라운)')) total += 2000;
 
     // 포장 추가 금액
     if (state.selectedPackaging === '기본 (펄프용기) + 비닐백') total += 27000;

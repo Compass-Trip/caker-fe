@@ -20,7 +20,7 @@ const Order = () => {
       <Header
         leftSide={<HeaderBack />}
         middleSide={
-          <div className="text-[17px] font-semibold text-[#2D2A32]">
+          <div className="text-[17px] font-semibold text-gray-900">
             상품정보
           </div>
         }
@@ -36,15 +36,15 @@ const Order = () => {
         <CakeCarousel />
       </section>
 
-      <section className=" border-3 rounded-t-[24px] border-[#EEEEEF]">
+      <section className=" border-3 rounded-t-[24px] border-gray-100">
         <div className="flex flex-col gap-2 py-[20px] px-[14px]">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-[#EEEEEF]" />
+            <div className="w-8 h-8 rounded-full bg-gray-100" />
             <div className="flex flex-col">
-              <div className="text-[15px] leading-[22px] text-[#48464C]">
+              <div className="text-[15px] leading-[22px] text-gray-700">
                 스웨이드 베이커리 청담
               </div>
-              <div className="text-[12px] leading-[16px] tracking-[0.0252em] text-[#79767D]">
+              <div className="text-[12px] leading-[16px] tracking-[0.0252em] text-gray-500">
                 서울 강남구
               </div>
             </div>
@@ -55,29 +55,26 @@ const Order = () => {
           <div className="text-[16px] leading-[24px] text-black">
             인기폭발 주문제작 레터링케이크
           </div>
-          <div className="h-12 flex items-center justify-between">
-            <div className="flex items-end gap-3">
-              <div className="flex items-center gap-1 text-[#79767D]">
-                <span className="text-[16px] leading-[24px]">35,000 원</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1">
-                  <span className="text-[16px] leading-[24px] font-bold text-[#E4002B]">
-                    3
-                  </span>
-                  <span className="text-[16px] leading-[24px] font-bold text-[#F70031]">
-                    %
-                  </span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="text-[16px] leading-[24px] font-bold text-[#2D2A32]">
-                    33,000
-                  </span>
-                  <span className="text-[16px] leading-[24px] text-[#79767D]">
-                    원
-                  </span>
-                </div>
-              </div>
+          <div className="flex items-center gap-1 text-gray-500">
+            <span className="text-[16px] leading-[24px] line-through">
+              35,000{' '}
+            </span>
+            <span className="text-[16px] leading-[24px]">원</span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
+              <span className="text-[16px] leading-[24px] font-bold text-primary-600">
+                3%
+              </span>
+            </div>
+            <div className="flex items-center gap-1">
+              <span className="text-[16px] leading-[24px] font-bold text-gray-900">
+                33,000
+              </span>
+              <span className="text-[16px] leading-[24px] text-gray-500">
+                원
+              </span>
             </div>
           </div>
         </div>
@@ -109,7 +106,7 @@ const Order = () => {
                 tabs: 'w-full sticky top-0',
                 list: 'w-full',
                 trigger:
-                  'flex-1 justify-center h-9 text-[16px] border-b-2 data-[state=active]:border-[#FF3A4E] data-[state=active]:text-[#D80023]',
+                  'flex-1 justify-center h-9 text-[16px] border-b-2 data-[state=active]:border-primary-500 data-[state=active]:text-primary-500',
                 content: 'mt-0',
               }}
             />
@@ -134,7 +131,7 @@ const Order = () => {
               )}
             </button>
             <button
-              className="flex-1 h-12 bg-[#FF0F31] text-white rounded-lg font-medium hover:bg-[#E4002B] transition-colors"
+              className="flex-1 h-12 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-colors"
               onClick={handleOrderClick}
             >
               주문하기

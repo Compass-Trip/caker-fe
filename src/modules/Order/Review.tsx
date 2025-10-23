@@ -3,7 +3,7 @@ import {
   mockReviews,
   type CategoryRating,
   type ReviewData,
-} from '@/assets/data/reviewList';
+} from '@/assets/data/ReviewList';
 import { useState } from 'react';
 import StarRating from './StarRating';
 
